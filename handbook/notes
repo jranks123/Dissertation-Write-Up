@@ -1,0 +1,7 @@
+Talk about how, because the project was done over the summer, it was not possible to test on school kids, however i tested it on people who couldn't code. outcome : people wanted guided lessons, a feature i would like to add to it
+
+talk about the decision of how much i wanted to allow the user to make mistakes.
+
+For testing, make some mock up programmes that you say you used every time you changed anything, that incorproate everything that can happen
+
+Say that I for testing purposes i record the button presses in array and output them every time button pressed so i can recreate problems easily
