@@ -7,7 +7,7 @@
 % - author name       should be formatted as "FirstName LastName"
 %   (not "Initial LastName" for example),
 % - supervisor name   should be formatted as "Title FirstName LastName"
-%   (where Title is "Dr." or "Prof." for example),
+%   (where Title is "Dr." or "Prosddeseseesdeswsedwqf." for example),
 % - degree programme  should be "BSc", "MEng", "MSci", "MSc" or "PhD",
 % - dissertation title should be correctly capitalised (plus you can have
 %   an optional sub-title if appropriate, or leave this field blank),
@@ -33,10 +33,11 @@
                       type={enterprise},
                 % the year of submission
                       year={2015 } ]{dissertation}
-                      
+
 \usepackage[parfill]{parskip}
 \usepackage{graphicx}
 \usepackage{pdfpages}
+\usepackage{wrapfig}
 \begin{document}
 
 % =============================================================================
@@ -48,6 +49,7 @@
 
 \section*{Prelude}
 \thispagestyle{empty}
+
 
 A typical dissertation will be structured according to (somewhat) standard 
 sections, described in what follows.  However, it is hard and perhaps even 
@@ -109,15 +111,26 @@ of authorship may still be produced online via
 
 \noindent
 CodeTouch is an application for touch screen devices that aims to make the process of teaching beginner programmers 
-how to code easier, more intuitive and up to date with current technology trends. In January 2012 the Government
+how to code easier, more intuitive and up to date with current technology trends.
+
+In January 2012 the Government
 announced that it was dropping the much derided ICT programme from the National Curriculum and replacing it with 
 a more relevant programme in Computing \cite{BBCITCstory}. As a result, since September 2014 it has been compulsory 
 in the UK to teach Computing to children from Key Stage 1 through to Key Stage 4 (from the ages 5 - 16). Despite universal
 acclaim for the decision, the programme is in it's infancy and schools are still figuring out the best ways to ensure that the pupils achieve the programmes objectives.
 
-One of the objectives of the Curriculum that teachers have reported being challenging is the the requirement that in Key Stage 3, the pupils must be able to use at least one textual programming language \cite{KS3}. There have been a number of programmes developed aimed at young children that use a "drag and drop" method of creating visual programmes using code blocks, such as Scratch \cite{Scratch} and Tynker \cite{Tynker}. Examples such as the aforementioned programmes are great for teaching the ideas behind programming as they remove the need for worrying about syntax mistakes and allow the focus to remain on teaching the principles of programming. However, these don't produce actual text-based code and are visually aimed at much younger children than the 11-14 year olds in Key Stage 3. There are also a number of existing applications that interactively teach text-based coding languages, such as CodeAcademy \cite{CodeAcademy}, but the gap between these two ways of teaching programming is a big one.
+One of the objectives of the Curriculum that teachers have reported being challenging is the requirement that in Key Stage 3, the pupils must be able to use at least one textual programming language \cite{KS3}. There have been a number of programmes developed aimed at young children that use a "drag and drop" method of creating visual programmes using code blocks, such as Scratch \cite{Scratch} and Tynker \cite{Tynker}. However, these don't produce actual text-based code and are visually aimed at much younger children than the 11-14 year olds in Key Stage 3. There are also a number of existing applications that interactively teach text-based coding languages, such as CodeAcademy \cite{CodeAcademy}, but the gap between these two ways of teaching programming is a big one. 
 
-CodeTouch aims to bridge this gap by combining the simplicity and ease of use of "drag and drop" programmes with the textual code output of the more advanced educational programmes. To produce code, the user presses buttons from a dynamic menu at the bottom of screen. CodeTouch analyses the current state of the program and decides what buttons should be available to the user and makes it impossible for syntactically incorrect code to be produced, and only lets the programme be ran once it is in a valid state.
+CodeTouch aims to bridge this gap by combining the simplicity and ease of use of "drag and drop" programmes with the textual code output of the more advanced educational programmes. 
+
+
+To produce code, the user presses buttons from a dynamic menu at the bottom of screen. CodeTouch analyses the current state of the program and decides what buttons should be available to the user and makes it impossible for syntactically incorrect code to be produced, and only lets the programme be ran once it is in a valid state.
+
+Not just for children in school, CodeTouch aims to capitalise on the recent upsurge in popularity of coding amongst the mainstream public. With programming becoming an increasingly requested skill from employers and the rampant success of the mobile app market encouraging progressively more people from all backgrounds and age ranges to lean how to code, CodeTouch aims to help people learn the fundamental principles of programming in an environment where the user need not worry about making syntax errors. 
+
+Although not yet implemented, CodeTouch has the potential to be developed into a full blown editor for a range of different languages. As programming with a keyboard is tricky, unintuitive and unpopular amongst consumers (Question 16, ~\ref{ssec:survey}), this would capitalise on the recent shift in sales from computers by allowing people to develop in an intuitive manner on their devices.
+
+
 
 \begin{quote}
 \noindent
@@ -128,9 +141,7 @@ CodeTouch aims to bridge this gap by combining the simplicity and ease of use of
 \item I wrote over $5000$ lines of java in Android Studio
 \item I developed a new technique for producing source code, using button presses on a touchscreen rather than typing on a keyboard 
 \item I developed a new approach (TALK ABOUT GOING STRAIGHT TO THE LANGUAGE TREE)
-\item I implemented a version of the algorithm proposed by Jones and 
-      Smith in [6], see page $12$, corrected a mistake in it, and 
-      compared the results with several alternatives.
+
 \end{itemize}
 \end{quote}
 
@@ -144,7 +155,6 @@ CodeTouch aims to bridge this gap by combining the simplicity and ease of use of
 
 
 \begin{quote}
-\noindent
 \begin{itemize}
 \item I used Android Studio \cite{AndroidStudio} to develop the application's source code
 \item I used a Samsung Galaxy Note 2014 edition to run and test the application on \cite{GalaxyNote}
@@ -179,7 +189,9 @@ as follows:
 ICT               &:     & Information and Communications Technologies                                        \\
 CPU                &:     & Central Processing Unit                                            \\
 GUI            &:     & Graphical User Interface                                      \\
-
+UCAS           &:     & Universities and Colleges Admissions Service \\
+PC       &:     & Personal Computer \\
+App      &:     & Application \\
                     &\vdots&                                                                      \\
 ${\mathcal H}( x )$ &:     & the Hamming weight of $x$                                            \\
 ${\mathbb  F}_q$    &:     & a finite field with $q$ elements                                     \\
@@ -217,38 +229,97 @@ I would like to thank the Strumpets with Crumpets crew for letting me use the va
 \chapter{Contextual Background}
 \label{chap:context}
 
-\section {A Short History of Computer Science Education in the UK}
+\section{Coding in Schools}
 
 \subsection{Early prestige}
 
-The United Kingdom has a rich history in the field of Computer Science. Inventions such as Charles Babbage's Difference Engine, regarded as the world's first mechanical computer when it was invented in the early 1800s \cite{Swade:2001:DEC:940732}, Tommy Flowers' Colossus, often describes as the world's first electronic computer, \cite{mackintosh2008first} helped establish the UK's reputation as a world leader in the field, not to mention the work done by Alan Turing, whose work laid down the foundations for the modern day general purpose computer \cite{Newman253}. Therefore it comes as no surprise that the UK led the way when it came to teaching Computer Science in schools. 
+The United Kingdom has a rich history in the field of Computer Science. Inventions such as Charles Babbage's Difference Engine, regarded as the world's first mechanical computer when it was invented in the early 1800s \cite{Swade}, Tommy Flowers' Colossus, often describes as the world's first electronic computer, \cite{mackintosh2008first} helped establish the UK's reputation as a world leader in the field, not to mention the work done by Alan Turing, whose work laid down the foundations for the modern day general purpose computer \cite{Newman253}. Therefore it comes as no surprise that the UK led the way when it came to teaching Computer Science in schools. 
 
-\subsection{The BBC Micro}
+\subsection{The BBC Micro}\label{sssec:bbcMicro}
 
-For a long time, computers were so expensive that their study was mostly confined to the academics at the universities. But as the 70s drew to a close, the drastic reduction in cost of the production of microprocessors meant that purchasing computers was becoming an ever more attractive option for ever smaller businesses around the world, who quickly saw the time-saving benefits of the tasks that computers could do for them. As more and more businesses bought into computers, the BBC, with backing from the Department of Education, decided that the public should be aware of the big changes that the microchip revolution was causing, and what impact this would have on their lives. A series of documentaries about microchips, broadcast in 1978 and 1979, promted so much interest that the highly ambitious Computer Literacy Project (CLP) was begun. This scheme aimed to teach the country to program via television broadcasts. A purpose-designed microcomputer (a small, cheap and self contained computer with a microprocessor as it's CPU) , the much-loved BBC Micro, was developed for the program, the idea being that viewers bought the machine and programmed along with the broadcasts. Educational establishments across the country took part in their droves, thanks in no small part to a government initiative which agreed to subsidise half of the costs of the machines to schools, and by the 1986, 80\% of UK schools had a Micro \cite{IIfASA}. The microcomputer's success was mirrored in the US, where 90\% of schools had a microcomputer by 1985\cite{IIfASA}.
+For a long time, computers were so expensive that their study and use was mostly confined to the academics at the universities. But as the 70s drew to a close, the drastic reduction in cost of the production of microprocessors meant that purchasing computers was becoming an ever more attractive option for ever smaller businesses around the world, who quickly saw their potential for making efficiency gains in many work related tasks, particularly in information processing. As more and more businesses bought into computers, the BBC, with backing from the Department of Education, decided that the public should be aware of the big changes that the microchip revolution was causing, and what impact this would have on their lives. A series of documentaries about microchips, broadcast in 1978 and 1979, prompted so much interest that the highly ambitious Computer Literacy Project (CLP) was begun. This scheme aimed to teach the country to program via television broadcasts. A purpose-designed microcomputer (a small, cheap and self contained computer with a microprocessor as it's CPU) , the much-loved BBC Micro, was developed for the program, the idea being that viewers bought the machine and programmed along with the broadcasts. Educational establishments across the country took part in their droves, thanks in no small part to a government initiative which agreed to subsidise half of the costs of the machines to schools, and by the 1986, 80\% of UK schools had a Micro \cite{IIfASA}. The microcomputer's success was mirrored in the US, where 90\% of schools had a microcomputer by 1985\cite{IIfASA}.
 
 
 
-\subsection{The introduction of ICT (at the expense of Computing) to the UK National Curriculum}
-Through the late 80s and into the 90s, the early enthusiasm for programming began to die away. The microcomputers that had been so popular encouraged programming as if you couldn't program it yourself they really couldn't do very much, putting the onus on the user to create their own fun with it. However, as operating systems grew in power and functionality, the need to be able to program to enjoy your computer diminished, with the tipping point being the immensely popular Windows 95 operating system with an GUI so popular it's framework can still be seen today,  a full 20 years on, in Microsoft's latest offering, Windows 10 (a brief flirtation with a different approach in it's predecessor, Windowns 8, was met with much uproad and little uptake). The rise of the GUI operating system meant that one could operate a computer without having to know any programming, and as a result their popularity boomed at home and in the office. 
-In 1995 it was decided that ICT should replace Computing on the National Curriculum \cite{ICTcurric}. Although both concerning computers, ICT and Computing, are vastly distinct school subject. ICT focuses on teaching pupils how to use applications on computers, such as spreadsheet, presentation and word processing programs, and it's introduction was a response to the rapid rise of the personal computer in the workplace and at home. The thinking behind the decision was along the lines of "you don’t need to know what’s under the bonnet of a car to drive it", in that it was at the time considered more important to teach the workforce how to use a computer than it was to teach them how it worked and how to program it. 
-
+\subsection{The Introduction of ICT (at the expense of Computing) to the UK National Curriculum}
+Through the late 80s and into the 90s, the early enthusiasm for programming began to die away. The microcomputers that had been so popular encouraged programming as if you couldn't program it yourself they really couldn't do very much, putting the onus on the user to create their own fun with it. However, as operating systems grew in power and functionality, the need to be able to program to enjoy your computer diminished, with the tipping point being the immensely popular Windows 95 operating system with an Graphical User Interface (GUI) so popular it's fundamental layout can still be seen today, a full 20 years on, in Microsoft's latest offering, Windows 10 (a brief flirtation with a different approach in it's predecessor, Windows 8, was met with much uproar and little uptake). The rise of the GUI operating system meant that one could operate a computer without having to know any programming, and as a result their popularity boomed at home and in the office. 
+In 1995 it was decided that ICT should replace Computing on the National Curriculum \cite{ICTcurric}. Although both concerning computers, ICT and Computing, are vastly distinct school subject. ICT focuses on teaching pupils how to use applications on computers, such as spreadsheet, presentation and word processing programs, and it's introduction was a response to the rapid rise of the personal computer in the workplace and at home. The thinking behind the decision was along the lines of ''you don’t need to know what’s under the bonnet of a car to drive it'', in that it was at the time considered more important to teach the workforce how to use a computer than it was to teach them how it worked and how to program it. 
 \subsection{The Re-introduction of Computing to the UK National Curriculum}
 
-It was met with much applause when the UK Government announced in January 2012 that Computing would replace the ICT course on the National Curriculum for Key Stages 1 - 4 from September 2014 \cite{BBCITCstory}. While it may have been important to teach children how to use computers in the early days of the personal computer, times have changed. Children are often more computer literate than their parents these days. A joint survey by retailer John Lewis and technology giant Microsoft revealed that 67 per cent of parents admit that they consult their children for technological advice \cite{TwoThirds}. As most children are already more than adept at using computers, teaching them what they already know is hardly a worthwhile use of limited school contact hours. Its replacement, Computing, aims to "equip pupils to use computational thinking and creativity to understand and change the world" \cite{ComputingCurric}. In a time of economic uncertainty, computer programming has emerged as one of the safest and best paid industries to work in, with jobs predicted to grow 22\% through to 2020 in the sector \cite{22percent}.  By teaching children how to program computers and to understand the principles behind information processing, it is hoped that teaching Computing from a young age will provide pupils with the necessary tools to thrive in this exciting, expanding sector.  
+It was met with much applause when the UK Government announced in January 2012 that Computing would replace the ICT course on the National Curriculum for Key Stages 1 - 4 from September 2014 \cite{BBCITCstory}.  While it may have been important to teach children how to use computers in the early days of the personal computer, times have changed. Children are now often more computer literate than their parents. A joint survey by retailer John Lewis and technology giant Microsoft revealed that 67 per cent of parents admit that they consult their children for technological advice \cite{TwoThirds}. As most children are already more than adept at using computers, teaching them what they already know is hardly a worthwhile use of limited school teaching hours. Its replacement, Computing, aims to "equip pupils to use computational thinking and creativity to understand and change the world" \cite{ComputingCurric}. In a time of economic uncertainty, computer programming has emerged as one of the safest and best paid industries to work in, with jobs predicted to grow 22\% through to 2020 in the sector \cite{22percent}.  By teaching children how to program computers and to understand the principles behind information processing, it is hoped that teaching Computing from a young age will provide pupils with the necessary tools to thrive in this exciting, expanding sector. 
 
-\subsection{Analysis of the success of the policy}
+\subsection{Aims of Computer Science Education in schools}
+Talk about the curriculum
 
-At the time of writing the programme is only one year old, so it's performance is difficult to judge. However, there are a range of initial concerns regarding it's implementation. A poll of over one thousand teachers by YouGov revealed that just 40\% of them believe themselves to be good enough to do what is required of them \cite{IBtimesGrowingGap}. This concern is shared by the former Minister of State for Schools, Lord Jim Knight, who view is that after years of teaching ICT, the sudden change to teaching programming is causing problems for the teachers. Most teachers are not trained in teaching coding, and "just don't know how to do it", and this combined with a lack of resources made available to support the programme are, in Kight's view, hampering it's success\cite{IBTimesCurric}.
+\subsection{Challenges for Computer Science Education in the UK}
 
-\subsubsection{}
+\subsubsection{Skills gap between teachers and classroom}
+
+At the time of writing the programme is only one year old, so it's performance is difficult to judge. However, there are a range of initial concerns regarding it's implementation. A poll of over one thousand teachers by YouGov revealed that just 40\% of them believe themselves to be good enough to do what is required of them \cite{IBtimesGrowingGap}. This concern is shared by the former Minister of State for Schools, Lord Jim Knight, who view is that after years of teaching ICT, the sudden change to teaching programming is causing problems for the teachers. Most teachers are not trained in teaching coding, and ''just don't know how to do it''. This combined with a perceived lack of resources being made available to help with the transition from ICT to Computing are, in Kight's view, hampering it's success and causing problems for teachers. \cite{IBTimesCurric}.
+\subsubsection{Transition From Visual Code Block Coding to Textual Coding}
+
+
+
+\subsection{How CodeTouch aims to solve these problems}
+
+
+
+
+
+\section {Coding Outside of Schools}
+
+\subsection{Coding in mainstream culture} %\label{ssec:learnCode}
+Coding has never been more in the mainstream. Barack Obama recently became the first President of The United States to write a line of code\cite{Obama}, The Social Network, a film detailing the story of Facebook, won three Oscars at the Academy Awards \cite{socialNetwork} and Silicon Valley, an American comedy series that follows the lives of software developers in California, recently got commissioned for a third series \cite{thirdSeries} on Americas most respected channel,HBO \cite{HBO}. This phenomenon is due to a variety of factors. The success story of mobile applications (As of June 2014, Apple's app store alone contains 1.2 million apps, which have had a combined 75 billion downloads between them \cite{apple75}) has created a thriving marketplace where anyone who can program an app can distribute them very easily to anyone with a smartphone. This has given people a really good reason to learn to program, which arguably there hasn't been since the pre-GUI operating system days of the 80s. The recent spate of multi-million dollar buy-outs of tech start-ups has further perked the interest of potential programmers, with examples such as Nick D'Aloisio, who sold his app Summly to Yahoo! for \$30million at the tender age of 17\cite{summly}, being of particular interest to young people. 
+
+This increased presence of coding in mainstream culture is reflected in the amount of people who are taking up coding. The Universities and Colleges Admissions Service (UCAS) reported an increase of 13\% in applications to study Computer Science in 2014 \cite{computerWeekly}. What's more, it's not just University students who are flocking to coding. An annual report into coding bootcamps (short, intensive programs, usually about 10 weeks long, that teach coding to beginners) from Course Report has shown that the number of people graduating from these programs has been dramatically rising, with the figure growing by 240\%, from about 6,000 to 16,000 graduates (in the US and Canada from 2014 to 2015 \cite{coursereport}). Although impressive, these figures are hardly startling when you consider that on average, 59\% of coding bootcamp graduates make their money back in salary increases in just one year\cite{switchUp}. Even more tellingly, this figure is about a third of the number of people graduating with Computer Science degrees from Universities in the same region \cite{coursereport} which indicates that increasingly, learning to code is no longer the preserve of academics, mirroring the revolution that the BBC Micro caused in the early 80s (\ref{sssec:bbcMicro}). This is symptomatic of a heightened demand for people who can code from employers \cite{22percent}, which is symbolic of a wider shift in the perception of programming, from being an academic, specialist skill that required 3 or 4 years of study at a high level to being more akin to trades such as plumbing or bricklaying, in which people can be trained up quickly and put to work. 
+
+Our independent research backs this up, with a survey of 140 people that we carried out which suggested that 40\% of people who do not know how to code would like to learn (Question 4, ~\ref{ssec:survey}). 
+
+
+\section{Growing markets and Social Trends}
+There are a variety of current social trends that inspired the development of CodeTouch.
+
+\subsection{Shift From Computers to Mobile Devices}%\label{ssec:shift}
+One such trend is the shift in popularity from computers to Tablets. While PC sales have been stagnant for years, declining 9.5\% in 2013 \cite{tabletOvertake}, tablet sales increased 24\% in the same period and are expected to overtake PC sales in 2015 \cite{tabletOvertake}(see Fig \ref{fig:tabVsPC}). As users switch from PCs to tablets, they will expect to be able to perform the tasks they could perform on their computers on their tablets, so either as an educational tool or, as is planned for further development, a full blown editor, CodeTouch will be able to take advantage of this.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.50\textwidth]{tabletVsPC}
+\label{fig:tabVsPC}
+\caption{Worldwide Device Shipments (in millions) by Segment \cite{tabletOvertake}}
+\end{figure}
+
+
+
+\subsection{Android}\label{sec:Android}
+The market share of the Android mobile operating system amongst mobile operating systems has been increasing steadily since 2012, going from 60\% in 2012 to 78\% in 2015 (see Fig \ref{fig:android}), which helped influence the decision to develop the application for Android so as to have the widest possible reach.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.50\textwidth]{android}\label{fig:android}\caption{Worldwide Device Shipments (in millions) by Operating System \cite{tabletOvertake}}
+\end{figure}
+
+
+ 
+
+\subsection{M-learning}
+
+
+CodeTouch falls into the self-paced E-Learning market, which is a market currently experiencing constant growth and is expected to do so for the foreseeable future. Today it is worth £31.1 billion and is growing with a compound annual interest rate of 7.6\%.
+Things get even more encouraging when examining the m-Education market, defined as any form of e-Learning delivered to a mobile device, which is currently worth £6.1 billion worldwide .The market has a projected compound annual interest rate of 20.65\% from 2013-2018 10, meaning in 2019 the sector is predicted to be worth £12.93 billion.
+
+
+\section{}
 why important? Writing code needs to catch up with the times, people are moving from desktops and laptos to tablets, big potential here especially with further development. 
 
 Goals: provide basis of two products: firstly educational app. secondly, could be adapeted to work with real languages, could evolve into entire new way of programming
 
 survey shows syntax mistakes are fustrating: put people off. People are very fickle with apps, (find percentage showing how many are used just once). less fustrating = more likely to keep playing : more livkely to catch coding fever etc
 
+\section{Competitors}
 
+
+
+\section{Target Audience}
 
 
 
@@ -278,16 +349,22 @@ summarises the aims and objectives.  For example:
 \noindent
 
 \subsection Motivation
-\noindent
-There has never been a time when more people have wanted to learn how to program. A survey of 140 people that we carried out showed that 40\% of people who do not know how to code would like to learn,
+This shift towards tablets from computers %\ref{shift}
+, combined with the upturn of people interested in learning how to code%\ref{learnCode}, 
+\begin{enumerate}
+\item Help teachers to bridge the gap between visual code-block based coding and textual coding, a requirement of the new Key Stage 3 National Curriculum for Computing. 
+\item Capitalise on coding's recent burst of popularity by designing an easy to use, intutive development environment for beginner programmers to learn the basics of programming.
+\end{enumerate}
+The high-level objective of this project is to create an coding application for Android devices, specifically tablets, where code is created via button presses. 
 
-
-The high-level objective of this project is to create an application that bridges the gap between "drag and drop" visual code-block based educational programs (i.e. Scratch and Tynker) and the typing based interactive educational educational programs,(i.e. CodeAcademy). 
 More specifically, the concrete aims are:
 
 \begin{enumerate}
-\item Design an interface for programming which allows text based code to be produced via button presses rather than typing. 
+\item Help teachers to bridge the gap between visual code-block based coding and textual coding, a requirement of the new Key Stage 3 National Curriculum for Computing. 
+\item Capitalise on coding's recent burst of popularity by designing an easy to use, intuitive development environment for beginner programmers to learn the basics of programming.
 \item 
+
+Design an interface for programming which allows text based code to be produced via button presses on a tablet rather than typing, capitalising on the social shift in popularity from Computers to tablets.  
 \item Implement a framework for describing exponentiation algorithms
       and populate it with suitable examples from the literature on 
       an ARM7 platform.
@@ -302,8 +379,50 @@ More specifically, the concrete aims are:
 \chapter{Technical Background}
 \label{chap:technical}
 
-{\bf A compulsory chapter, of roughly $10$ to $20$ pages} 
-\vspace{1cm} 
+\section{Supporting Technologies}
+\subsection{Choice Between Developing A Native Application, Cross-Platform Application or Hybrid Application }
+When deciding how to implement the application, there were three options to choose from:
+\begin{enumerate}
+\item \textbf{Native Application}
+\begin{itemize}
+A Native Application is written in a specific programming language for a specific hardware platform, for example Java for Android with Android, Objective C with iOS and C# for Windows Phone. Native apps are the best option in terms of performance as they can access the hardware of the device it is running on. Debugging is also easier, however the single platform nature of native applications make them more expensive to develop and maintain if cross platform coverage is desired, as companies need to do everything multiple times and potentially employ experts in multiple programming languages in order to maintain their app. 
+\end{itemize}
+
+
+\item \textbf{Cross-Platform Application}
+\begin{itemize}
+A Cross-Platform Application is an application written in a generic web language, most commonly HTML5, in order to be runnable on all mobile applications, which is an obvious advantage over developing nativley.  Other advantages include being able to update the application centrally, removing the need for the user to download updates.  However, having to accommodate for all different types of browser can cause maintenance problems, and the fact that Cross-Platform apps cannot be uploaded to the native Application stores (such as Apple's App Store and Google's Play Store) may put off potential users as the apps security cannot be verified. Furthermore, they do not perform as quickly as native apps and due to their cross-platform nature, have to look the same on all devices, which can make them look unnatural. 
+\end{itemize}
+\item \textbf {Hybrid Application}
+\begin{itemize}
+A Hybrid Application aims to  combine the advantages of native and web app development. They are developed in generic web languages but are wrapped in native code. This means they can be cross platform but still take advantage of the devices in-built features. However, they still retain the disadvantages of cross-platform apps in that they do not perform as well and can look unnatural.
+\end{itemize}
+\end{enumerate}
+
+For CodeTouch, the performance of the application is very critical to the applications core function; when a user is creating code, it should feel instant and natural. Seeing as it was difficult to predict if there would be any performance issues before development on the application started, the decision was made to go native in order to minimise the risk of poor performance affecting the application's use-ability. Once this decision was made, the decision to go for Android was made based on reasons articulated earlier in this document (see \ref{sec:Android});
+
+
+
+
+
+
+
+
+
+Talk about history of language engineering, of real time error checking
+
+
+Talk in depth how code block programming works
+
+Talk in depth how code academy works
+
+Talk in depth how CodeTouch meets in the middel
+
+Talk about touch develop: sort of bridges gap but not quite, doesn't have flow of writing code like CodeTouch
+
+talk about pencil code
+
+Output is real code, looks like java but could be tweaked to be anything, or indeed to actually create valid java.
 
 \noindent
 This chapter is intended to describe the technical basis on which execution
@@ -437,6 +556,10 @@ which is intended to ensure it does not run into the text.
 This chapter is intended to evaluate what you did.  The content is highly 
 topic-specific, but for many projects will have flavours of the following:
 
+TALK ABOUT how i could have used reverse shunting algorithm for brackets expression, explain it in depth
+
+IDEA colaberative programming for classroom, so every pupil could have tablet with code, teacher chooses person to do next line
+
 \begin{enumerate}
 \item functional  testing, including analysis and explanation of failure 
       cases,
@@ -445,7 +568,9 @@ topic-specific, but for many projects will have flavours of the following:
       and
 \item evaluation of options and decisions within the project, and/or a
       comparison with alternatives.
-\end{enumerate}
+\end{enumerate
+
+
 
 \noindent
 This chapter often acts to differentiate project quality: even if the work
@@ -454,7 +579,7 @@ and comparison of the outcomes is crucial.  In essence, the reader wants to
 learn something, so the worst examples amount to simple statements of fact 
 (e.g., ``graph X shows the result is Y''); the best examples are analytical 
 and exploratory (e.g., ``graph X shows the result is Y, which means Z; this 
-contradicts [1], which may be because I use a different assumption'').  As 
+contradicts , which may be because I use a different assumption'').  As 
 such, both positive {\em and} negative outcomes are valid {\em if} presented 
 in a suitable manner.
 
@@ -542,5 +667,7 @@ is not obliged to read such appendices.
 
 % =============================================================================
 \subsection{Survey Results}
+\label{ssec:survey}
 \includepdf[pages={1-6}]{survey.pdf}
+
 \end{document}
