@@ -190,6 +190,7 @@ ICT               &:     & Information and Communications Technologies          
 CPU                &:     & Central Processing Unit                                            \\
 GUI            &:     & Graphical User Interface                                      \\
 UCAS           &:     & Universities and Colleges Admissions Service \\
+XML           &:    EXtensible Markup Language \\
 PC       &:     & Personal Computer \\
 App      &:     & Application \\
                     &\vdots&                                                                      \\
@@ -248,27 +249,36 @@ In 1995 it was decided that ICT should replace Computing on the National Curricu
 
 It was met with much applause when the UK Government announced in January 2012 that Computing would replace the ICT course on the National Curriculum for Key Stages 1 - 4 from September 2014 \cite{BBCITCstory}.  While it may have been important to teach children how to use computers in the early days of the personal computer, times have changed. Children are now often more computer literate than their parents. A joint survey by retailer John Lewis and technology giant Microsoft revealed that 67 per cent of parents admit that they consult their children for technological advice \cite{TwoThirds}. As most children are already more than adept at using computers, teaching them what they already know is hardly a worthwhile use of limited school teaching hours. Its replacement, Computing, aims to "equip pupils to use computational thinking and creativity to understand and change the world" \cite{ComputingCurric}. In a time of economic uncertainty, computer programming has emerged as one of the safest and best paid industries to work in, with jobs predicted to grow 22\% through to 2020 in the sector \cite{22percent}.  By teaching children how to program computers and to understand the principles behind information processing, it is hoped that teaching Computing from a young age will provide pupils with the necessary tools to thrive in this exciting, expanding sector. 
 
-\subsection{Aims of Computer Science Education in schools}
-Talk about the curriculum
+\subsection{Aims of Computer Science Education in schools}\label{ssec:KS3}
+The following is an extract from the new Key Stage 3 Computing National Curriculum:
 
-\subsection{Challenges for Computer Science Education in the UK}
+\begin{quote}
+Pupils should be taught to:
+\begin{itemize}
+\item Use two or more programming languages, at least one of which is textual, to solve a
+variety of computational problems
+\item design and develop modular programs that use procedures or functions
+\item understand simple Boolean logic [for example, AND, OR and NOT] 
+\end{itemize}
+\end{quote}
+
+
 
 \subsubsection{Skills gap between teachers and classroom}
 
 At the time of writing the programme is only one year old, so it's performance is difficult to judge. However, there are a range of initial concerns regarding it's implementation. A poll of over one thousand teachers by YouGov revealed that just 40\% of them believe themselves to be good enough to do what is required of them \cite{IBtimesGrowingGap}. This concern is shared by the former Minister of State for Schools, Lord Jim Knight, who view is that after years of teaching ICT, the sudden change to teaching programming is causing problems for the teachers. Most teachers are not trained in teaching coding, and ''just don't know how to do it''. This combined with a perceived lack of resources being made available to help with the transition from ICT to Computing are, in Kight's view, hampering it's success and causing problems for teachers. \cite{IBTimesCurric}.
+
+
 \subsubsection{Transition From Visual Code Block Coding to Textual Coding}
+One of the most challenging aspects of the new Curriculum that that teachers have reported struggling with is the requirement in Key Stage 3 that students have to be able to program in a textual language. Before this point, pupils are taught programming with visual code-block languages (such as Scratch, see \ref{ssec:Scratch}), which is relativly simple to teach, predominantly because the pupils (and teachers) don't need to worry about syntax, making it easy to focus on the underlying principles. However there is a big step up when it comes to teaching textual languages. There are some great applications that teach textual coding (such as CodeAcademy, see \ref{ssec:CodeAcademy}), but it's much more challenging, especially for teachers who, due to the aforementioned lack of funding, are not experts themselves. 
 
-
-
-\subsection{How CodeTouch aims to solve these problems}
-
-
+CodeTouch aims to help teachers with this transition, by combining the ease of use of the visual code-block programming applications and the textual output and sophistication of the more advanced applications. 
 
 
 
 \section {Coding Outside of Schools}
 
-\subsection{Coding in mainstream culture} %\label{ssec:learnCode}
+\subsection{Coding in mainstream culture} \label{ssec:learnCode}
 Coding has never been more in the mainstream. Barack Obama recently became the first President of The United States to write a line of code\cite{Obama}, The Social Network, a film detailing the story of Facebook, won three Oscars at the Academy Awards \cite{socialNetwork} and Silicon Valley, an American comedy series that follows the lives of software developers in California, recently got commissioned for a third series \cite{thirdSeries} on Americas most respected channel,HBO \cite{HBO}. This phenomenon is due to a variety of factors. The success story of mobile applications (As of June 2014, Apple's app store alone contains 1.2 million apps, which have had a combined 75 billion downloads between them \cite{apple75}) has created a thriving marketplace where anyone who can program an app can distribute them very easily to anyone with a smartphone. This has given people a really good reason to learn to program, which arguably there hasn't been since the pre-GUI operating system days of the 80s. The recent spate of multi-million dollar buy-outs of tech start-ups has further perked the interest of potential programmers, with examples such as Nick D'Aloisio, who sold his app Summly to Yahoo! for \$30million at the tender age of 17\cite{summly}, being of particular interest to young people. 
 
 This increased presence of coding in mainstream culture is reflected in the amount of people who are taking up coding. The Universities and Colleges Admissions Service (UCAS) reported an increase of 13\% in applications to study Computer Science in 2014 \cite{computerWeekly}. What's more, it's not just University students who are flocking to coding. An annual report into coding bootcamps (short, intensive programs, usually about 10 weeks long, that teach coding to beginners) from Course Report has shown that the number of people graduating from these programs has been dramatically rising, with the figure growing by 240\%, from about 6,000 to 16,000 graduates (in the US and Canada from 2014 to 2015 \cite{coursereport}). Although impressive, these figures are hardly startling when you consider that on average, 59\% of coding bootcamp graduates make their money back in salary increases in just one year\cite{switchUp}. Even more tellingly, this figure is about a third of the number of people graduating with Computer Science degrees from Universities in the same region \cite{coursereport} which indicates that increasingly, learning to code is no longer the preserve of academics, mirroring the revolution that the BBC Micro caused in the early 80s (\ref{sssec:bbcMicro}). This is symptomatic of a heightened demand for people who can code from employers \cite{22percent}, which is symbolic of a wider shift in the perception of programming, from being an academic, specialist skill that required 3 or 4 years of study at a high level to being more akin to trades such as plumbing or bricklaying, in which people can be trained up quickly and put to work. 
@@ -279,8 +289,8 @@ Our independent research backs this up, with a survey of 140 people that we carr
 \section{Growing markets and Social Trends}
 There are a variety of current social trends that inspired the development of CodeTouch.
 
-\subsection{Shift From Computers to Mobile Devices}%\label{ssec:shift}
-One such trend is the shift in popularity from computers to Tablets. While PC sales have been stagnant for years, declining 9.5\% in 2013 \cite{tabletOvertake}, tablet sales increased 24\% in the same period and are expected to overtake PC sales in 2015 \cite{tabletOvertake}(see Fig \ref{fig:tabVsPC}). As users switch from PCs to tablets, they will expect to be able to perform the tasks they could perform on their computers on their tablets, so either as an educational tool or, as is planned for further development, a full blown editor, CodeTouch will be able to take advantage of this.
+\subsection{Shift From Computers to Mobile Devices}\label{ssec:shift}
+One such trend is the shift in popularity from computers to tablets. While PC sales have been stagnant for years, declining 9.5\% in 2013 \cite{tabletOvertake}, tablet sales increased 24\% in the same period and are expected to overtake PC sales in 2015 \cite{tabletOvertake}(see Fig \ref{fig:tabVsPC}). As users switch from PCs to tablets, they will expect to be able to perform the tasks they could perform on their computers on their tablets, so either as an educational tool or, as is planned for further development, a full blown editor, CodeTouch will be able to take advantage of this.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.50\textwidth]{tabletVsPC}
@@ -308,20 +318,50 @@ CodeTouch falls into the self-paced E-Learning market, which is a market current
 Things get even more encouraging when examining the m-Education market, defined as any form of e-Learning delivered to a mobile device, which is currently worth £6.1 billion worldwide .The market has a projected compound annual interest rate of 20.65\% from 2013-2018 10, meaning in 2019 the sector is predicted to be worth £12.93 billion.
 
 
-\section{}
-why important? Writing code needs to catch up with the times, people are moving from desktops and laptos to tablets, big potential here especially with further development. 
-
-Goals: provide basis of two products: firstly educational app. secondly, could be adapeted to work with real languages, could evolve into entire new way of programming
-
-survey shows syntax mistakes are fustrating: put people off. People are very fickle with apps, (find percentage showing how many are used just once). less fustrating = more likely to keep playing : more livkely to catch coding fever etc
-
-\section{Competitors}
-
-
-
 \section{Target Audience}
+CodeTouch is aimed at three main different types of users:
+\begin{enumerate}
+\item Beginner programmers who want to learn how to code
+\item Pupils in schools studying Computing, especially at the Key Stage 3 level
+\item Tablet owning developers who want to program on their devices
+\end{enumerate}
+
+\section{Competition}
+The competition 
+
+\subsection{Scratch}\label{ssec:Scratch}
+
+\subsection{CodeAcademy}\label{ssec:CodeAcademy}
+
+\subsection{TouchDevelop}
 
 
+\section {Motivation and Objectives}
+This shift towards tablets from computers \ref{ssec:shift}, combined with the upturn of people interested in learning how to code \ref{ssec:learnCode}, creates a very attractive opportunity for CodeTouch to take advantage of. As people start to use tablets for more of the things they would usually use a computer for, a programming app specifically aimed at the platform has the potential to be very popular. Moreover, the introduction of Computing to the UK National Curriculum, specifically the requirement to learn a textual language by Key Stage 3, has created a gap between the required and actual aptitude of school teachers who are struggling to implement the new policy with limited resources. By creating an application that makes teaching code easier for both teacher and pupil to learn, understand and produce real textual code, with the ease of the drag and drop code applications that pupils will be used to coming into Key Stage 3, CodeTouch has the capacity to be a powerful educational tool. 
+
+
+
+
+In summary, the reasons for developing CodeTouch as are follows:
+
+\begin{enumerate}
+\item Help teachers to bridge the gap between visual code-block based coding and textual coding, a requirement of the new Key Stage 3 National Curriculum for Computing
+\item Capitalise on coding's recent burst of popularity by designing an easy to use, intutive development environment for beginner programmers to learn the basics of programming.
+\item Exploit the recent rise of the tablets to ubiquitous status by creating a coding environment designed for such devices, taking advantage of their touchscreen capabilities. 
+\end{enumerate}
+
+In order to achieve these goals, CodeTouch aims to create an interface and method of writing code that fits the following criteria:
+
+
+
+\begin{enumerate}
+\item Makes the most of the available space on a tablet screen
+\item Exploit the benefits that a touch screen has over a conventional keyboard, most importantly it's dynamic nature 
+\item Create a programming environment that removes the need to worry about syntax mistakes so that beginners can focus on learning the principles of writing code
+\item Helps teachers bring pupils understanding of computing to the required level as required by the sections of the Key Stage 3 National Curriculum articulated earlier in this document (see \ref{ssec:KS3}).
+\item Is as easy to use as visual code-block programming applications but produces textual output, while making sure if retains the feel and flow of writing code on a keyboard. 
+\item Is fast and usable enough that it is also attractive to experienced coders as well as beginners 
+\end{enumerate}
 
 
 
@@ -345,41 +385,20 @@ central challenges involved and why are they significant?
 The chapter should conclude with a concise bullet point list that 
 summarises the aims and objectives.  For example:
 
-\begin{quote}
-\noindent
 
-\subsection Motivation
-This shift towards tablets from computers %\ref{shift}
-, combined with the upturn of people interested in learning how to code%\ref{learnCode}, 
-\begin{enumerate}
-\item Help teachers to bridge the gap between visual code-block based coding and textual coding, a requirement of the new Key Stage 3 National Curriculum for Computing. 
-\item Capitalise on coding's recent burst of popularity by designing an easy to use, intutive development environment for beginner programmers to learn the basics of programming.
-\end{enumerate}
-The high-level objective of this project is to create an coding application for Android devices, specifically tablets, where code is created via button presses. 
-
-More specifically, the concrete aims are:
-
-\begin{enumerate}
-\item Help teachers to bridge the gap between visual code-block based coding and textual coding, a requirement of the new Key Stage 3 National Curriculum for Computing. 
-\item Capitalise on coding's recent burst of popularity by designing an easy to use, intuitive development environment for beginner programmers to learn the basics of programming.
-\item 
-
-Design an interface for programming which allows text based code to be produced via button presses on a tablet rather than typing, capitalising on the social shift in popularity from Computers to tablets.  
-\item Implement a framework for describing exponentiation algorithms
-      and populate it with suitable examples from the literature on 
-      an ARM7 platform.
-\item Use the framework to perform a study of algorithm performance
-      in terms of time and space, and show the proposed improvements
-      are worthwhile.
-\end{enumerate}
-\end{quote}
 
 % -----------------------------------------------------------------------------
 
 \chapter{Technical Background}
 \label{chap:technical}
 
-\section{Supporting Technologies}
+The main technical challenge of developing CodeTouch was to designing and implementing a brand new system of generating and running code, in a syntax-error free environment, which would be fast and intuitive on the limited screen space of a tablet. 
+
+
+\section{Technologies Used in Development}
+
+Before development could begin there were a number of decisions that had to be made regarding the technology options available, and which ones would be most suited for CodeTouch in order to best achieve the projects goals. Here I will outline the different options and explain how and why these decisions were made, as well as giving some background information on the technologies that were chosen. 
+
 \subsection{Choice Between Developing A Native Application, Cross-Platform Application or Hybrid Application }
 When deciding how to implement the application, there were three options to choose from:
 \begin{enumerate}
@@ -399,10 +418,71 @@ A Hybrid Application aims to  combine the advantages of native and web app devel
 \end{itemize}
 \end{enumerate}
 
-For CodeTouch, the performance of the application is very critical to the applications core function; when a user is creating code, it should feel instant and natural. Seeing as it was difficult to predict if there would be any performance issues before development on the application started, the decision was made to go native in order to minimise the risk of poor performance affecting the application's use-ability. Once this decision was made, the decision to go for Android was made based on reasons articulated earlier in this document (see \ref{sec:Android});
+For CodeTouch, the performance of the application is very critical to the applications core function; when a user is generating code, it should feel as instant and natural as typing is on a computer. Seeing as it was difficult to predict if there would be any performance issues before development on the application started, the decision was made to go native in order to minimise the risk of poor performance affecting the application's use-ability. Once this decision was made, the decision to go for Android was made based on reasons articulated earlier in this document (see \ref{sec:Android}), plus I personally had more experience in Java than either Objective C or HTML5. 
+
+\subsection{Android}
+\subsubsection{Overview}
+Although Android is now a household name, I will briefly describe it's key features. Android is an Operating System (OS) for mobile devices, developed by Google. It is the most popular mobile OS in the world, thanks in part to Google making it open source, allowing third party smartphone and tablet manufacturers to use it as the OS for their devices. 
+
+\subsubsection{Language}
+As touched upon before, it's native language is Java for Android, a language very similar to Java. There are barely any noticeable differences between the two languages for the developer , it's main differences are in how it is compiled. Normal Java compiles code into Java bytecode and runs it on a Java Virtual Machine (an abstract computing machine which allows a computer to run a Java program). Android for Java instead compiles code into a specialised bytecode format and run's in on a purposely designed virtual machine called Davlik, which was designed to use less space than Java Virtual Machine, for obvious reasons given mobile devices limited memory capacities. 
+
+\subsubsection{Layout}
+There are two ways of programming the layouts for Android applications, either defining it programatically in the main application source code or writing it in XML in a separate layout file. For a multitude of reasons, it is common convention to write most of it out in XML. One advantage is that as it is separate from the main source code, it can be modified without having to change and recompile the application. This makes creating and testing different layout options much easier than having to edit the source code. As it is all in one document it also makes visualising the UI's structure easier. 
+
+
+There are also benefits of declaring layout elements in the source code, for example being able to dynamically create layout elements and being able to define many layout elements at once using loops.
+
+For CodeTouch, the main structure of the layout is defined in XML, with some additional elements being defined in the source code, such as the variable buttons that needed to be created dynamically. 
 
 
 
+
+\subsection{Choice Of Integrated Development Environment (IDE)}
+An Integrate Development Environment, in the case of mobile applications, is an application that allows the editing, compiling, debugging, GUI building and running of mobile application source code. There are a range of different options for choosing an IDE for Android Development, but when CodeTouch development started there were two conventional options: Eclipse and Android Studio, Google's own IDE. 
+\begin{enumerate}
+\item Eclipse
+\begin{itemize}
+\item Pros
+\begin{itemize}
+\item Currently compiles faster than Android Studio.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Cons
+\begin{itemize}
+\item Eclipse Android plugin no longer being developed (Announced June 2015)
+\end{itemize}
+\end{itemize}
+
+\item Android Studio
+\begin{itemize}
+\item Pros
+\begin{itemize}
+\item Better support as is developed by Google
+\item Improved auto-completion options over Eclipse
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Cons
+\begin{itemize}
+\item Compilation can be very slow, sometimes taking minutes at a time.
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+
+When development for CodeTouch started there was a genuine choice, as the Eclipse plugin was still being supported and developed, although there were suspicions of it's support being dropped as Android Studio had recently come out of beta mode. Having previously used Eclipse and with it already installed on my machine the temptation was there to stick with it, but ultimately Android Studio was chosen down to the fact that it's support was more guaranteed than Eclipse's.
+
+\subsection{Android Studio}
+Android Studio, as previously mentioned, is Google's own IDE for developing Android apps. 
+
+
+\subsection{Android Device Monitor}
+Android Device Monitor is a program that accompanies Android Studio which provides a GUI for debugging Android apps. In particular it contains a tool called Traceview which can produce visual and textual information about what sections of code are being called most often and for how long, a tool which came in very useful when trying to locate bottlenecks in order to optimise the running of the program.
+
+
+
+\section{Language Engineering}
 
 
 

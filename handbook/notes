@@ -1,9 +1,49 @@
+Evaluation:
+
 Talk about how, because the project was done over the summer, it was not possible to test on school kids, however i tested it on people who couldn't code. outcome : people wanted guided lessons, a feature i would like to add to it
 
-talk about the decision of how much i wanted to allow the user to make mistakes.
+have section that acknowledges its shortcomings: potentially limited as an educational tool as schools would all have to buy tablets for everyone. Solution: develop web version in the future
+
+talk about the decision of how much i wanted to allow the user to make mistakes [WHAT SECTION WOULD THIS BE IN]
 
 For testing, make some mock up programmes that you say you used every time you changed anything, that incorproate everything that can happen
 
 Say that I for testing purposes i record the button presses in array and output them every time button pressed so i can recreate problems easily
 
 ask if i can talk about problems that CodeTouch would solve if it was fully finished
+
+Optimised code by removing search and instead having pointer
+
+Device Montior
+TraceView
+
+
+
+Android Studio - contains a dynamic language parser, 
+
+
+things i did - seq, newline and eval nodes were most common, put them at top
+
+evaluate algorithm - runs in 0(n) time
+optimised it by not declaring new 
+
+
+Talk about reasons why i could not do formal evaluation in schools and why feedback is limited from beginners: holidays, people not around. Talk about what feedback i would like to attain
+
+additional features: 
+
+ability to copy and paste
+real languages
+ability to save code
+
+
+
+user feedback: 
+
+a back button when mid expression would be good, currently fustrating if you make a  small mistake and have to finish the line
+
+deleting was confusing, was never sure what was going to be deleted 
+
+question: should stuff i didnt get time to do go into the objectives? and just say i didnt have time to do it?
+
+
