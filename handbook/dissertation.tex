@@ -677,7 +677,11 @@ The compilation process is the sequence of events that turns source code into a 
 \draw [arrow2] (r1) -- (a6);
 \draw [arrow] (start) -- (a1);
 \draw [arrow] (a6) -- (end);
-\node [below=2cm, align=flush center,text width=10cm] at (end);
+\draw [arrow] (a6) -- (end);
+\node [below=2cm, align=flush center,text width=10cm] at (end)
+        {
+           $Stages$ $of$ $the$ $Compilation$ $Process$
+        };
 \end{tikzpicture}
 
 
@@ -1000,11 +1004,13 @@ The parse tree generated from the syntactical analysis can be said to be a Concr
 
 
 \Tree[.= [.a ]
-          [.$-$ [.b ]
-                [.* [.5 ] ]]]
+          [.- [.b ]
+                [.*  [.5 ]
+                [.6
+                ]]]]
                 \caption{}\label{fig:ab}
 \end{subfigure}
-\caption{Concrete Syntax Tree (a) and Abstract Syntax Tree (b) of $ a = b + 5 + 6 $}
+\caption{Concrete Syntax Tree (a) and Abstract Syntax Tree (b) of $ a = b - 5 * 6 $}
 \label{fig:concab}
 \end{figure}
 
@@ -1021,8 +1027,10 @@ This step takes the AST and performs any optimisations that will speed up the pr
   \centering
   
 \Tree[.= [.a ]
-          [.$-$ [.b ]
-                [.* [.5 ] ]]]
+          [.- [.b ]
+                [.*  [.5 ]
+                [.6
+                ]]]]
 \caption{}\label{fig:ast}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
@@ -1037,6 +1045,8 @@ This step takes the AST and performs any optimisations that will speed up the pr
 \caption{}
 \label{fig:opti}
 \end{figure}
+
+In our example, the numerical constant 5 multiplied by the numerical constant 6 will always equate to 30, so the 5*6 is replaced with 30 on the tree.
 
 
 \subsection{Code Generation}
