@@ -36,8 +36,47 @@
 
 \usepackage[parfill]{parskip}
 \usepackage{graphicx}
+\graphicspath{ {images/} }
 \usepackage{pdfpages}
 \usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{qtree}
+\usepackage{newfloat}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{arrow2} = [dashed,<->,>=stealth]
+\tikzstyle{decision} = [diamond, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+
+
+\DeclareFloatingEnvironment[fileext=lod]{diagram}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breakatwhitespace=true,
+  tabsize=3
+}
 \begin{document}
 
 % =============================================================================
@@ -193,6 +232,8 @@ UCAS           &:     & Universities and Colleges Admissions Service \\
 XML           &:    EXtensible Markup Language \\
 PC       &:     & Personal Computer \\
 App      &:     & Application \\
+BNF   &: Backus-Naur Form \\
+CFG   &: Context Free Grammar\\
                     &\vdots&                                                                      \\
 ${\mathcal H}( x )$ &:     & the Hamming weight of $x$                                            \\
 ${\mathbb  F}_q$    &:     & a finite field with $q$ elements                                     \\
@@ -208,7 +249,7 @@ $x_i$               &:     & the $i$-th bit of some binary sequence $x$, st. $x_
 \vspace{1cm} 
 
 \noindent
-I would like to thank the Strumpets with Crumpets crew for letting me use the van as an office throughout the summer, the nice girl at the Secret Emporium at Secret Garden Party who lent me her MacBook charger when mine broke, my parents who drove all the way to Cumbria to deliver me by little brother's laptop (thanks Jacob!) when mine broke during Kendal Calling and the various people who have let me live in their rooms or on their sofas over the duration of the summer!
+
 
 % =============================================================================
 
@@ -286,26 +327,27 @@ This increased presence of coding in mainstream culture is reflected in the amou
 Our independent research backs this up, with a survey of 140 people that we carried out which suggested that 40\% of people who do not know how to code would like to learn (Question 4, ~\ref{ssec:survey}). 
 
 
-\section{Growing markets and Social Trends}
+\section{Growing Markets and Social Trends}
 There are a variety of current social trends that inspired the development of CodeTouch.
 
 \subsection{Shift From Computers to Mobile Devices}\label{ssec:shift}
-One such trend is the shift in popularity from computers to tablets. While PC sales have been stagnant for years, declining 9.5\% in 2013 \cite{tabletOvertake}, tablet sales increased 24\% in the same period and are expected to overtake PC sales in 2015 \cite{tabletOvertake}(see Fig \ref{fig:tabVsPC}). As users switch from PCs to tablets, they will expect to be able to perform the tasks they could perform on their computers on their tablets, so either as an educational tool or, as is planned for further development, a full blown editor, CodeTouch will be able to take advantage of this.
+One such trend is the shift in popularity from computers to tablets. While PC sales have been stagnant for years, declining 9.5\% in 2013 \cite{tabletOvertake}, tablet sales increased 24\% in the same period and are expected to overtake PC sales in 2015 \cite{tabletOvertake}(see Figure~\ref{fig:tabVsPC}). As users switch from PCs to tablets, they will expect to be able to perform the tasks they could perform on their computers on their tablets, so either as an educational tool or, as is planned for further development, a full blown editor, CodeTouch will be able to take advantage of this.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.50\textwidth]{tabletVsPC}
-\label{fig:tabVsPC}
 \caption{Worldwide Device Shipments (in millions) by Segment \cite{tabletOvertake}}
+\label{fig:tabVsPC}
 \end{figure}
 
 
 
 \subsection{Android}\label{sec:Android}
-The market share of the Android mobile operating system amongst mobile operating systems has been increasing steadily since 2012, going from 60\% in 2012 to 78\% in 2015 (see Fig \ref{fig:android}), which helped influence the decision to develop the application for Android so as to have the widest possible reach.
+The market share of the Android mobile operating system amongst mobile operating systems has been increasing steadily since 2012, going from 60\% in 2012 to 78\% in 2015 (see Figure~\ref{fig:android}), which helped influence the decision to develop the application for Android so as to have the widest possible reach.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.50\textwidth]{android}\label{fig:android}\caption{Worldwide Device Shipments (in millions) by Operating System \cite{tabletOvertake}}
+\includegraphics[width=0.50\textwidth]{android}\caption{Worldwide Device Shipments (in millions) by Operating System \cite{tabletOvertake}}
+\label{fig:android}
 \end{figure}
 
 
@@ -326,14 +368,52 @@ CodeTouch is aimed at three main different types of users:
 \item Tablet owning developers who want to program on their devices
 \end{enumerate}
 
-\section{Competition}
-The competition 
+\section{Existing Applications }
+While I believe CodeTouch's interface to be unique in it's feel, approach and ease of use, there are existing applications with similar target audiences and objectives whose strengths and weaknesses I carefully studied when making functionality and design decisions throughout the duration of this project. 
+
 
 \subsection{Scratch}\label{ssec:Scratch}
+Scratch is perhaps the most successful "drag and drop" code-block based visual programming language, with over 7 million registered users \cite{scratchWebsite}. A free, open source project from the Lifelong Kindergarten Group at the MIT Media Lab, it has been very popular in educational establishments.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{scratch}
+\caption{Scratch's Graphical User Interface}
+\label{fig:scratchh}
+\end{figure}
+
+As is clear from its interface, shown Figure~\ref{fig:scratchh}, Scratch is squarely aimed at a younger audience. The user controls what it calls "Sprites" (for example the cat in Figure~\ref{fig:scratchh}) by dragging blocks of code from a menu onto a platform, where the shape of the blocks shows the user what blocks can work together. This approach is great in the sense that it is very clear what is and isn't valid, so the user doesn't have to worry about making syntax mistakes, they just have to make the shapes match. 
 
 \subsection{CodeAcademy}\label{ssec:CodeAcademy}
+CodeAcademy is an popular typing based tool that teaches programming through interactive lessons. Users are taught through step-by-step challenges and are rewarded with badges and experience points upon completion, encouraging users to return to the website. It contains tutorials for a host of languages, from web languages such as HTML and CSS to scripting languages like JavaScript and Python. 
 
-\subsection{TouchDevelop}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{CodeAcademy}
+\caption{CodeAcademy's Graphical User Interface}
+\label{fig:codeac}
+\end{figure}
+
+As shown in Figure~\ref{fig:codeac}, it has useful intelligent error reporting system that suggests where user may have gone wrong. CodeAcademy can be seen as a direct competitor to CodeTouch as has collaborated with the Department of Education to produce lessons for the new National Curriculum \ref{codeAcCu}, which have so far been taken up by over 1000 schools in the UK \ref{codeAcBr}. As part of this collaboration, a classroom management tool for schools has been made available to track pupils progress.
+
+
+
+
+\subsection{TouchDevelop}{ssec:TD}
+TouchDevelop is probably the most similar product that exists to CodeTouch. Developed by Microsoft, it is unique amongst CodeTouch's competitors in that it too takes input via button presses to produce textual code. Like CodeAcademy, it has step-by-step tutorials and has designed courses to fit the UK national curriculum. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{touchdevelop}
+\caption{TouchDevelops's Graphical User Interface}
+\label{fig:touch}
+\end{figure}
+
+Although TouchDevelop has similar objectives to CodeTouch, there are some key differences in implentation and user experience. TouchDevelop has a large, complicated interface with a multitude of buttons on screen at any time (see Figure~\ref{fig:touch}), which slows down the coding process and gives it a clunky feel. Coding on TouchDevelop does not have the same flow as typing and feels unnatural, for example to declare a variable the user has to click where they want to declare it in the code, use the menu to choose the name then click on the code again after the assignment symbol. The same goes for adding functions and other programming paradigms such as \textbf{if} then \textbf{else} statements, all of which disrupts the flow of coding. TouchDevelop also allows the user to create syntactically incorrect code. 
+
+
+
 
 
 \section {Motivation and Objectives}
@@ -350,40 +430,20 @@ In summary, the reasons for developing CodeTouch as are follows:
 \item Exploit the recent rise of the tablets to ubiquitous status by creating a coding environment designed for such devices, taking advantage of their touchscreen capabilities. 
 \end{enumerate}
 
-In order to achieve these goals, CodeTouch aims to create an interface and method of writing code that fits the following criteria:
+In order to achieve these goals, CodeTouch aims to create an integrated IDE with a unqiue interface and method of writing code that fits the following criteria:
 
 
 
 \begin{enumerate}
 \item Makes the most of the available space on a tablet screen
-\item Exploit the benefits that a touch screen has over a conventional keyboard, most importantly it's dynamic nature 
-\item Create a programming environment that removes the need to worry about syntax mistakes so that beginners can focus on learning the principles of writing code
-\item Helps teachers bring pupils understanding of computing to the required level as required by the sections of the Key Stage 3 National Curriculum articulated earlier in this document (see \ref{ssec:KS3}).
-\item Is as easy to use as visual code-block programming applications but produces textual output, while making sure if retains the feel and flow of writing code on a keyboard. 
+\item Exploits the benefits that a touch screen has over a conventional keyboard, most importantly it's dynamic nature 
+\item Creates a programming environment that removes the need to worry about syntax mistakes so that beginners can focus on learning the principles of writing code
+\item Is as easy to use as visual code-block programming applications but produces textual output
+\item Retains the free flowing feel of typing code on a keyboard
+\item Helps teachers bring pupils understanding of computing to the required level as required by the sections of the Key Stage 3 National Curriculum articulated earlier in this document (see \ref{ssec:KS3})
 \item Is fast and usable enough that it is also attractive to experienced coders as well as beginners 
 \end{enumerate}
 
-
-
-
-This chapter should describe the project context, and motivate each of
-the proposed aims and objectives.  Ideally, it is written at a fairly 
-high-level, and easily understood by a reader who is technically 
-competent but not an expert in the topic itself.
-
-In short, the goal is to answer three questions for the reader.  First, 
-what is the project topic, or problem being investigated?  Second, why 
-is the topic important, or rather why should the reader care about it?  
-For example, why there is a need for this project (e.g., lack of similar 
-software or deficiency in existing software), who will benefit from the 
-project and in what way (e.g., end-users, or software developers) what 
-work does the project build on and why is the selected approach either
-important and/or interesting (e.g., fills a gap in literature, applies
-results from another field to a new problem).  Finally, what are the 
-central challenges involved and why are they significant? 
- 
-The chapter should conclude with a concise bullet point list that 
-summarises the aims and objectives.  For example:
 
 
 
@@ -392,15 +452,11 @@ summarises the aims and objectives.  For example:
 \chapter{Technical Background}
 \label{chap:technical}
 
-The main technical challenge of developing CodeTouch was to designing and implementing a brand new system of generating and running code, in a syntax-error free environment, which would be fast and intuitive on the limited screen space of a tablet. 
 
+Before development could begin there were a number of decisions that had to be made regarding the technology options available, and which ones would be most suited for CodeTouch in order to best achieve the projects goals. Here I will outline the different options and explain their strengths and weaknesses. 
 
-\section{Technologies Used in Development}
-
-Before development could begin there were a number of decisions that had to be made regarding the technology options available, and which ones would be most suited for CodeTouch in order to best achieve the projects goals. Here I will outline the different options and explain how and why these decisions were made, as well as giving some background information on the technologies that were chosen. 
-
-\subsection{Choice Between Developing A Native Application, Cross-Platform Application or Hybrid Application }
-When deciding how to implement the application, there were three options to choose from:
+\section{Different Type Of Mobile Application }\label{sec:ApTypes}
+At time of writing, there are 3 main types of mobile application:
 \begin{enumerate}
 \item \textbf{Native Application}
 \begin{itemize}
@@ -418,16 +474,16 @@ A Hybrid Application aims to  combine the advantages of native and web app devel
 \end{itemize}
 \end{enumerate}
 
-For CodeTouch, the performance of the application is very critical to the applications core function; when a user is generating code, it should feel as instant and natural as typing is on a computer. Seeing as it was difficult to predict if there would be any performance issues before development on the application started, the decision was made to go native in order to minimise the risk of poor performance affecting the application's use-ability. Once this decision was made, the decision to go for Android was made based on reasons articulated earlier in this document (see \ref{sec:Android}), plus I personally had more experience in Java than either Objective C or HTML5. 
 
-\subsection{Android}
-\subsubsection{Overview}
-Although Android is now a household name, I will briefly describe it's key features. Android is an Operating System (OS) for mobile devices, developed by Google. It is the most popular mobile OS in the world, thanks in part to Google making it open source, allowing third party smartphone and tablet manufacturers to use it as the OS for their devices. 
 
-\subsubsection{Language}
-As touched upon before, it's native language is Java for Android, a language very similar to Java. There are barely any noticeable differences between the two languages for the developer , it's main differences are in how it is compiled. Normal Java compiles code into Java bytecode and runs it on a Java Virtual Machine (an abstract computing machine which allows a computer to run a Java program). Android for Java instead compiles code into a specialised bytecode format and run's in on a purposely designed virtual machine called Davlik, which was designed to use less space than Java Virtual Machine, for obvious reasons given mobile devices limited memory capacities. 
+\section{Android}
+\subsection{Overview}
+CodeTouch is developed for Android devices. Although Android is now a household name, I will briefly describe it's key features. Android is an Operating System (OS) for mobile devices, developed by Google. It is the most popular mobile OS in the world, thanks in part to Google making it open source, allowing third party smartphone and tablet manufacturers to use it as the OS for their devices. 
 
-\subsubsection{Layout}
+\subsection{Language}
+Android's native language is Java for Android, a language very similar to Java. There are barely any noticeable differences between the two languages for the developer , it's main differences are in how it is compiled. Normal Java compiles code into Java bytecode and runs it on a Java Virtual Machine (an abstract computing machine which allows a computer to run a Java program). Android for Java instead compiles code into a specialised bytecode format and run's in on a purposely designed virtual machine called Davlik, which was designed to use less space than Java Virtual Machine, for obvious reasons given mobile devices limited memory capacities. 
+
+\subsection{Layout}
 There are two ways of programming the layouts for Android applications, either defining it programatically in the main application source code or writing it in XML in a separate layout file. For a multitude of reasons, it is common convention to write most of it out in XML. One advantage is that as it is separate from the main source code, it can be modified without having to change and recompile the application. This makes creating and testing different layout options much easier than having to edit the source code. As it is all in one document it also makes visualising the UI's structure easier. 
 
 
@@ -438,7 +494,7 @@ For CodeTouch, the main structure of the layout is defined in XML, with some add
 
 
 
-\subsection{Choice Of Integrated Development Environment (IDE)}
+\subsection{Android Integrated Development Environments (IDE)}\label{sec:andIDE}
 An Integrate Development Environment, in the case of mobile applications, is an application that allows the editing, compiling, debugging, GUI building and running of mobile application source code. There are a range of different options for choosing an IDE for Android Development, but when CodeTouch development started there were two conventional options: Eclipse and Android Studio, Google's own IDE. 
 \begin{enumerate}
 \item Eclipse
@@ -471,7 +527,6 @@ An Integrate Development Environment, in the case of mobile applications, is an 
 \end{itemize}
 \end{enumerate}
 
-When development for CodeTouch started there was a genuine choice, as the Eclipse plugin was still being supported and developed, although there were suspicions of it's support being dropped as Android Studio had recently come out of beta mode. Having previously used Eclipse and with it already installed on my machine the temptation was there to stick with it, but ultimately Android Studio was chosen down to the fact that it's support was more guaranteed than Eclipse's.
 
 \subsection{Android Studio}
 Android Studio, as previously mentioned, is Google's own IDE for developing Android apps. 
@@ -480,9 +535,563 @@ Android Studio, as previously mentioned, is Google's own IDE for developing Andr
 \subsection{Android Device Monitor}
 Android Device Monitor is a program that accompanies Android Studio which provides a GUI for debugging Android apps. In particular it contains a tool called Traceview which can produce visual and textual information about what sections of code are being called most often and for how long, a tool which came in very useful when trying to locate bottlenecks in order to optimise the running of the program.
 
+INCLUDE IMAGE OF TRACEVIEW
+
+\section{Programming Languages}
 
 
-\section{Language Engineering}
+\subsection{Overview}
+At a high level, a programming language is a language constructed to relay instructions to a computer. More specifically, a language is usually described by two components, it's \textbf{syntax} and it's \textbf{semantics}.
+
+\subsubsection{Syntax}
+From Wikipedia:
+
+\begin{quote}
+
+\textit{The syntax of a computer language is the set of rules that defines the combinations of symbols that are considered to be a correctly structured document or fragment in that language.}
+\end{quote}
+
+In plainer terms, the syntax of a language refers to the rules that determine whether a program is structurally sound. This is easier to understand by comparing it to the syntax of the English language. A sentence is considered to be syntactically correct if all the words it contains are valid in the positions they are in. For example the sentence "He chair" is not syntactically correct as a noun cannot follow a pronoun.
+
+The syntax of a language is traditionally made up of three sections:
+\begin{itemize}
+\item {Lexical Syntax: }
+This is the set of all valid tokens in a language. A token can be thought of a single element of a language. To use the English language analogy again, a token would be like the set of all valid words and punctuation marks. 
+
+\item{Concrete Syntax: }
+The concrete syntax of a language is the set of rules that describes a language. With reference to token. In most languages, it can be expressed by a \textbf{Context Free Grammar (CFG)}. A CFG $G\,$ can be described by the 4 tuple\cite{Sipser}:
+
+$G\,$ = ( $V\,$, $\Sigma$ , $R\,$, $S\,$ ) where:
+
+\begin{itemize}
+\item
+$V\,$  is a finite set, whose elements are called variables
+\item
+$\Sigma$ is a finite set, whose elements are called terminals
+\item
+$R\,$ is a finite relation from V to ($V\,\cup\Sigma$)$^{*}\,$. The members of $R\,$ are called the rules or productions of the grammar. 
+\item
+$S\,$ is the start variable , used to represent the whole sentence (or program). It must be an element of $V\,$.
+\end{itemize}
+
+
+
+\item{Abstract Syntax: }
+An optimised internal representation of the program which is defined by a simpler grammar. 
+\end{itemize}
+
+
+\subsubsection{Semantics}
+While syntax refers to the structure of a language, semantics concerns it's meaning, or what it does. More formally: 
+
+\begin{quote}
+\textit{The semantics of a programming language describe the relationship between the syntax and the model of computation\cite{semantics}.}
+\end{quote}
+
+To demonstrate this let's look at an example: 
+
+\begin{lstlisting}[language=Java]
+int a = 0;
+for( int i = 0; i < 10; i++){
+    a = a + 1;
+}
+\end{lstlisting}
+
+If we were to analyse this syntactically, all we could say about it is that it is a valid combination of symbols for the Java language. On the otherhand, if we were to analyse it semantically we would say that this source code declares a new integer variable $a$ with an initial value of 0, then increments this value by 1 a total of 10 times, giving it a final value of 10. 
+
+Another example that illustrates the difference between the syntactical and semantical properties of a code is the following two Java snippets:
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.5\textwidth}
+  \centering
+
+\begin{lstlisting}[language=Java]
+int a = 10;
+if( a > 0 ){
+    System.out.println("Hello world");
+}else{
+    System.out.println("Goodbye world");
+}
+\end{lstlisting}
+
+
+\end{subfigure}%
+\begin{subfigure}{0.5\textwidth}
+  \centering
+\begin{lstlisting}[language=Java]
+//
+int a = 10;
+if( a > 0 ){
+    System.out.println("Hello world");
+}
+//
+\end{lstlisting}
+
+
+\end{subfigure}
+\label{fig:success}
+\end{figure}
+
+Syntactically, the two pieces of code are distinct, as the one on the left contains extra symbols. Semantically, however, they are exactly the same, as they both declare a new variable a and output= the text "hello word".
+
+
+
+
+\section{Compilation}
+The compilation process is the sequence of events that turns source code into a sequence of instructions that a computer an understand. This is necessary because most code is written in a high level language designed to be easily understood by humans rather than machines. It can be split into the following main sections \cite{compiler}:
+
+\begin{center}
+
+\begin{tikzpicture}[node distance=2cm]
+
+\node (start) [decision] {Source Code};
+\node (a1) [process, below of=start] {Lexial Analysis};
+\node (a2) [process, below of=a1] {Syntax Analysis};
+\node (a3) [process, below of=a2] {Semantic Analysis};
+\node (a4) [process, below of=a3] {Intermediate Code Generation};
+\node (r1) [startstop, right of=a3, xshift=5cm] {Error Handler};
+\node (l1) [startstop, left of=a3, xshift=-5cm] {Symbol Table};
+
+\node (a5) [process, below of=a4] {Code Optimization};
+\node (a6) [process, below of=a5] {Code Generation};
+\node (end) [decision, below of=a6] {Machine Code};
+\draw [arrow, below of=a1] (a1) -- (a2);
+\draw [arrow, below of=a1] (a2) -- (a3);
+\draw [arrow, below of=a1] (a3) -- (a4);
+\draw [arrow, below of=a1] (a4) -- (a5);
+\draw [arrow, below of=a1] (a5) -- (a6);
+\draw [arrow, below of=a1] (a6) -- (end);
+\draw [arrow2] (l1) -- (a1);
+\draw [arrow2] (l1) -- (a2);
+\draw [arrow2] (l1) -- (a3);
+\draw [arrow2] (l1) -- (a4);
+\draw [arrow2] (l1) -- (a5);
+\draw [arrow2] (l1) -- (a6);
+\draw [arrow2] (r1) -- (a1);
+\draw [arrow2] (r1) -- (a2);
+\draw [arrow2] (r1) -- (a3);
+\draw [arrow2] (r1) -- (a4);
+\draw [arrow2] (r1) -- (a5);
+\draw [arrow2] (r1) -- (a6);
+\draw [arrow] (start) -- (a1);
+\draw [arrow] (a6) -- (end);
+\node [below=2cm, align=flush center,text width=10cm] at (end)
+        {
+           $Stages$ $of$ $the$ $Compilation$ $Process$
+        };
+\end{tikzpicture}
+
+
+\end{center}
+
+As is shown from the diagram, at each step of compilation errors can be detected and reported. Also important is the symbol table. This can have differing purposes depending on what language is being compiled:
+
+\begin{itemize}
+\item To store a reserve list keywords in a language that cannot be used for other purposes
+\item To store variable names and their scope
+\item To implement type checking
+\item To store information about variable scope
+
+\subsection{Lexical Analysis}
+
+\begin{itemize}
+\item[]
+In traditional programming languages, the is the process of converting an input stream of characters (the code) into tokens (tokenisation). This step will determine whether the code it has been given is indeed made up of valid tokens. This process has several sub processes. It will remove and white spaces and comments, split the input stream into what are known as lexeme (a lexical unit of a language that is made up of one of several characters, which do not make sense separately), then pass these lexeme to a series of recognisers that will categorise them into tokens. These could include recognisers such as:
+
+\begin{enumerate}
+\item A keyword recogniser, categorises keyword tokens by consulting a list of keywords that cannot be used as identifiers (for example \textbf{null} or {String} in Java). 
+\item An identifier recogniser, which categorises identifier token such as variables. 
+\item A numerical constant recogniser, which categorises numerical tokens
+\item An string constant recogniser, which categorises string tokens
+\item An operator recogniser, which categorises operator tokens
+\item A recogniser to categorise other tokens that contribute to the structure  of the code, such as semi-colons and parenthesis.
+\end{enumerate}
+
+
+For some tokens, additional information is stored, for example a variable would store the name of the variable as well. 
+
+There are many ways of doing lexical analysis, but to illustrate the point clearly I will now demonstrate an example of lexical analysis:
+
+
+
+
+
+
+
+
+\begin{table}[!h]
+\begin{center}
+    \begin{tabular}{ |  l |   l | }
+    \hline
+    \textbf{Lexeme} & \textbf{Token}\\ \hline
+    a & a\\ \hline
+    = & = \\ \hline
+    b & ID(b)  \\ \hline
+    - & - \\ \hline
+    c & ID(c) \\ \hline
+    *  & * \\ \hline
+    d & ID(c)  \\ \hline
+
+    \end{tabular}
+        \caption {Possibe lexical analysis of code}
+\label{name}
+\end{center}
+\end{table}
+
+
+
+
+\end{itemize}
+
+The example above shows an example tokenisation of the given code, where ID(a) means a keyword token with value a.
+
+At this stage, there are very few errors that can be detected. At most, it can invalid tokens (for example, an illegal symbol). 
+
+
+
+
+
+
+
+
+\subsection{Syntactic Analysis}
+
+
+
+This step takes the tokens generated from Lexical analysis and determines if they fit the grammar of a language by attempting to create a parse tree from the tokens, using the languages Context Free Grammar. The resulting tree from this process is called the \textbf{Concrete Syntax Tree}. 
+\item []
+
+For example, we can define the language $G\,$ as follows:
+
+$G\,$ = 
+(\big\{ $\langle$ EXP $\rangle$, $\langle$ ID$\rangle$, $\langle$ ASSIGN$\rangle$ \big\}, \big\{$ a, b, c, d, +, -, = $\big\}, $R\,$, $\big\{\langle$ ASSIGN $\rangle$ \big\} ) 
+
+The rules of the grammar are often expressed in Backus-Naur Form (BNF):
+\newline
+
+
+
+$R\,$ $=\,$ 
+$\langle ASSIGN \rangle$ $\rightarrow$ $\langle EXP \rangle$ = $\langle EXP \rangle$
+
+$\langle EXP \rangle$ $\rightarrow$  $\langle ID \rangle$ + $\langle EXP \rangle$  $|$  $\langle ID \rangle$ - $\langle EXP \rangle$ $|$ $\langle ID \rangle$ 
+
+
+
+$\langle ID \rangle$ $\rightarrow$ $a | b | c | d$
+
+
+At this stage, structural errors in the code can be detected. 
+Broadly speaking, there are two appraoches to parsing, top down and bottom up. Top-down parsing starts with the start symbol of the grammar and uses the rules to try and get to the given statement. If it can successfully, it is declared syntactically correct. 
+
+Bottom-up parsing starts with the statement and works up the rules to try and get to the start symbol. 
+
+The other factor that must be considered when parsing is whether to use a leftmost derivation parser or a rightmost derivation parser. A leftmost derivation parser moves through the tree evaluating all non-terminal statements on the left first, and a rightmost derivation parser does the same but with the right. 
+
+It is not necessary for the scope of this project to understand the nuances of leftmost and rightmost derivation parsers, nor the differences between top-down and bottom-up parsing. In order to illustrate how parsing works I will now present an example of a leftmost derivation, top-down parser, as this is the easiest to comprehend and adequately demonstrates the process of parsing. 
+
+
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{0.7\textwidth}
+  \centering
+
+\Tree[.$\langle$ASSIGN$\rangle$ [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.a ] ]]
+            [.$=$ ]
+          [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.b ]]
+            [.$-$ ]
+                [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.c ]]
+            [.$+$ ]
+                [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.d
+]]]]]]
+
+
+\end{subfigure}%
+\begin{subfigure}{0.7\textwidth}
+  \centering
+        \begin{enumerate}
+          \item $\langle ASSIGN \rangle    $\\      
+            \item $\langle EXP \rangle = \langle EXP \rangle $\\
+            \item $\langle ID \rangle = \langle EXP \rangle$ \\
+            \item $a = \langle EXP \rangle $\\
+            \item $a = \langle ID \rangle - \langle EXP \rangle $\\
+            \item $a = b - \langle EXP \rangle $\\
+            \item $a = b - \langle ID \rangle + \langle EXP \rangle $\\
+            \item $a = b - c + \langle EXP \rangle $\\
+            \item $a = b - c + \langle ID \rangle $\\
+            \item $a = b - c + d $\\
+        \end{enumerate}
+
+\end{subfigure}
+\caption{$a = b - c + d$}
+\label{fig:success}
+\end{figure}
+
+Figure~\ref{fig:success} shows a successful top down, leftmost derivation parsing of the code $a = b - c + d$ using grammar $G$. The left hand side of the diagram shows the resulting parse tree and the right hand side shows the derivation steps. As you can see in step 1, we start with the start symbol of the grammar, $\langle ASSIGN \rangle$. If we recall the first rule from $R$:
+
+\begin{center}
+$\langle ASSIGN \rangle$ $\rightarrow$ $\langle EXP \rangle$ = $\langle EXP \rangle$
+\end{center}
+we can see that our code, $a = b - c + d$, can fit this as we can put $a$ into the left side and $b - c + d$ into the right side, giving us
+$\langle EXP \rangle$ = $\langle EXP \rangle$.
+
+From here, as we are evaluating the left hand side first, the parser now looks for the left most non-terminal symbol, which in this case is $\langle EXP \rangle$, which contains only $a$. 
+
+If we recall the second rule from $R$:
+\begin{center}
+$\langle EXP \rangle$ $\rightarrow$  $\langle ID \rangle$ + $\langle EXP \rangle$  $|$  $\langle ID \rangle$ - $\langle EXP \rangle$ $|$ $\langle ID \rangle$ 
+\end{center}
+
+we can see that $a$ will not fit into either of the first two conditions, $\langle ID \rangle$ + $\langle EXP \rangle$  or  $\langle ID \rangle$ - $\langle EXP \rangle$, but it will fit into $\langle ID \rangle$, so $\langle EXP \rangle$  evaluates to $\langle ID \rangle$, leaving us with the derviation $\langle ID \rangle$ = $\langle EXP \rangle$ to evaluate.
+
+Now the left most non-terminal symbol is $\langle ID \rangle$, which we can evaluate using the third rule of $R$:
+
+\begin{center}
+$\langle ID \rangle$ $\rightarrow$ $a | b | c | d$
+\end{center}
+
+resulting in the derviation $\langle ID \rangle$ = $\langle EXP \rangle$.. 
+
+The parser carries on in this fashion until it there are no more non-terminal symbols left, in this instance after a total of 10 derivation steps, and declares the statement syntactically correct. 
+I will now show an example of a statement that does not fit the grammar. 
+
+
+
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+  \Tree[.$\langle$ASSIGN$\rangle$ [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.a ] ]]
+            [.$=$ ]
+          [.$\langle$EXP$\rangle$ [.$?\,?\,?\,$ ]]
+]
+
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \begin{enumerate}
+  \item $\langle ASSIGN \rangle    $\\      
+\item $\langle EXP \rangle = \langle EXP \rangle $\\
+\item $\langle ID \rangle = \langle EXP \rangle$ \\
+\item $a = \langle EXP \rangle $\\
+\item $a$ = $???$ \\
+\end{enumerate}
+
+\end{subfigure}
+\caption{$a$ = $b$ $c$}
+\label{fig:test}
+\end{figure}
+
+In this example, we try and parse the code $a$ = $b$ $c$. The first 4 steps are the same as the the example from Figure~\ref{fig:success}, but then we run into a problem. The leftmost non-terminal symbol,  $\langle EXP \rangle $, contains $b$ then $c$. From the second rule of R:
+
+\begin{center}
+$\langle EXP \rangle$ $\rightarrow$  $\langle ID \rangle$ + $\langle EXP \rangle$  $|$  $\langle ID \rangle$ - $\langle EXP \rangle$ $|$ $\langle ID \rangle$ 
+\end{center}
+
+we can see that $\langle EXP \rangle$ has to either evaluate to something + something, something - something or something by itself. The statement $b$ $c$ cannot fit into any of these categories, so the parser declares the code not syntactically correct. 
+
+
+\end{itemize}
+
+\subsection{Ambiguous Grammars}
+Before we move on, it is important to note that when building a grammar to build a Concrete Syntax Tree, a highly desirable property is that of \textbf{unambiguity}. To say a grammar is ambiguous is to say that one string can have more than one distinct valid parse trees. The problem with this is that these parse trees, although all having the same value syntactically, can have completely different meanings semantically. 
+
+For example, to perform mathematical operations, it is intuitive to define the grammar $G1$ as:
+\\
+$G1\,$ = \begin{centering} 
+(\big\{ $\langle$ EXP $\rangle$, $\langle$ NUM$\rangle$, \big\}, \big\{$a,b, c, +, -, *, /, \wedge $\big\}, $R\,$, $\big\{\langle$ EXP $\rangle$ \big\} ) \end{centering}
+\\
+\\
+$R\,$ $=\,$ 
+$\langle EXP \rangle$ $\rightarrow$ \begin{centering}$\langle EXP \rangle$ + $\langle EXP \rangle$  $|$ \\ $\langle EXP \rangle$ - $\langle EXP \rangle$ $|$ \\ $\langle EXP \rangle$ * $\langle EXP \rangle$ $|$ \\ $\langle EXP \rangle$ / $\langle EXP \rangle$ $|$ \\ $\langle EXP \rangle$ \wedge $\langle EXP \rangle$ $|$ \\ $a$ $|$  $b$ $|$  $c$ \\ \end{centering}
+\\
+\\
+\linebreak
+However, this is unambiguous as it can produce different trees with different meanings depending on the parser. 
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+\Tree[.$\langle$EXP$\rangle$ [.$\langle$EXP$\rangle$ [.$\langle$EXP$\rangle$ [.a ] ]
+            [.$+$ ]
+                [.$\langle$EXP$\rangle$ [.c ]
+]]
+            [.$*$ ]
+          [.$\langle$EXP$\rangle$ [.a ]]]
+          \caption{}\label{fig:left}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+\Tree[.$\langle$EXP$\rangle$ [.$\langle$EXP$\rangle$ [.a ]]
+            [.$+$ ]
+          [.$\langle$EXP$\rangle$ [.$\langle$EXP$\rangle$ [.b ] ]
+            [.$*$ ]
+                [.$\langle$EXP$\rangle$ [.c ]
+]]]
+\caption{}\label{fig:right}
+\end{subfigure}%
+\caption{Leftmost derivative (a) and rightmost derivative parse trees for $a + b * c$}\label{fig:both}
+\end{figure}
+
+The two trees in Figure~\ref{fig:both} are both valid parse trees for $a + b * c$, but Figure~\ref{fig:left} has the semantic meaning of (a+b)*c while Figure~\ref{fig:right} has the semantic meaning of a+(b*c). We could fix this by 
+
+
+
+
+
+\subsection{Semantical Analysis}
+This stage analyses whether the source code provided makes sense or not. The main tasks involved in this are:
+\begin{itemize}
+\item \textbf{Scope Resolution} \\ This is the process of checking whether a variable that has been called is accessable from the position in the code it is in. To use a Java snippet as an example:
+\begin{lstlisting}[language=Java]
+    if(true){
+        int a;
+    }
+    a = 5;
+\end{lstlisting}
+This code would pass syntactical analysis, as all the symbols are valid tokens and are arranged in a structurally correct manner, however semantic analysis of this code should report an error because on the line $a = 5$, the variable $a$ is not in scope. This is because it has been declared inside an if statement.
+\\
+\item \textbf{Type Checking} \\ This is the process of determine whether a statement uses variable types correctly. To use another Java snippet as an example:
+\begin{lstlisting}[language=Java]
+    Boolean b = 3;
+    int i = "foo";
+    String a = b && i;
+\end{lstlisting}
+
+This code would again probably pass sytactial analysis (depending on the sophistication of the analysis), but there are multiple type errors here that mean it doesn't make sense semantically. For example, the Boolean $b$ is being declared with a numerical value, the int $i$ is being declared with a String value and on the third line a Boolean operation is being performed on a Boolean and an int.
+\\
+\item \textbf{Array-bound checking} \\ This is the process of ensuring that any array index calls are within the limits of that array. The following C++ code illustrates an array-bound checking error:
+\begin{lstlisting}[language=Java]
+    double exampleArray [ 6 ];
+    exampleArray[7] = 4;
+    
+\end{lstlisting}
+
+This code declares an array of doubles, with the parameter 6, indicating that indexes 0-5 are valid. The next line tries to call $exampleArray$ with an index of 7, which is out of range. At this stage, an error should be reported.  
+
+
+\end{itemize}
+
+\subsection{Intermediate Code Generation}
+The parse tree generated from the syntactical analysis can be said to be a Concrete Syntax Tree, in that it exactly represents the source code. This often contains many nodes which are unessential for understanding the actions of the code, such as parentheses and semi-colons. The next step it to optimise this tree as much as possible for the later stages of the compiler. This is done by creating what is known as an
+\textbf{Abstract Syntax Tree (AST)} from the Concrete Syntax Tree. 
+
+
+\begin{figure}[!h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+\Tree[.$\langle$ASSIGN$\rangle$ [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.a ] ]]
+            [.$=$ ]
+          [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.b ]]
+            [.$-$ ]
+                [.$\langle$EXP$\rangle$ [.$\langle$NUM$\rangle$ [.5 ]]
+            [.$*$ ]
+                [.$\langle$EXP$\rangle$ [.$\langle$NUM$\rangle$ [.6
+]]]]]]
+\caption{}\label{fig:con}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+
+
+\Tree[.= [.a ]
+          [.$-$ [.b ]
+                [.* [.5 ] [. 6]]]]
+                \caption{}\label{fig:ab}
+\end{subfigure}
+\caption{Concrete Syntax Tree (a) and Abstract Syntax Tree (b) of $ a = b + 5 + 6 $}
+\label{fig:concab}
+\end{figure}
+
+
+
+Figure~\ref{fig:ab} shows the Abstract Syntax Tree created from the Concrete Syntax Tree in Figure~\ref{fig:con}. The non-terminal symbols are not needed as they do not contribute to the semantic meaning of the code.
+
+\subsection{Code Optimization}
+This step takes the AST and performs any optimisations that will speed up the program execution. 
+
+\begin{figure}[!h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+\Tree[.= [.a ]
+          [.$-$ [.b ]
+                [.* [.5 ] [. 6]]]]
+\caption{}\label{fig:ast}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+
+
+\Tree[.= [.a ]
+          [.$-$ [.b ]
+                [.30 ]]]
+                \caption{}\label{fig:opt}
+\end{subfigure}
+\caption{}
+\label{fig:opti}
+\end{figure}
+
+
+
+\subsection{Code Generation}
+
+
+\section{Different Types Of Programming Language Used To Teach Beginners}\label{sec:teachL}
+
+Easily the two most popular languages to teach programming with are Python and Java \cite{javapython}and there are a range of reasons for this. Both are high-level languages in that they hide much of the complexity, such as memory allocation and garbage collection, from the user. This makes it easier to teach than a lower level language such as C, which requires a deeper understanding of how computers interpret and run code. Whether this is a desirable feature of a language to be taught to beginners is a hot topic of debate, with many feeling that abstracting such aspects of programming at so early on in a programmers education means they will probably never learn about them and ultimately hinders their understanding and eventual capability as a programmer. However, opponents of this opinion would argue that this is a sacrifice worth making in order to flatten the learning curve for beginners. With UK schools already struggling on a shoestring budget to train their teachers to an adequate level to teach the children the new curriculum, expecting them to train their teachers to understand the ins and outs of C is unrealistic. 
+
+Python has recently emerged as a fashionable choice for teaching programming as it is very concise compared to other languages, which can make it easier to understand. It dynamically typed, meaning that variables do not have to be declared with a name. The code below (Listing~\ref{lst:python}) would first output the \textbf{str} (Python's string type) ''hello'' then the \textbf{int} (Python's integer type) 2. Again, whether this is a good thing is debatable for the reasons outlined in the previous paragraph. 
+
+\begin{quote}
+\begin{lstlisting}[caption={Example Python code},label={lst:python},language=Python]
+foo = "hello"
+print foo
+foo = 2
+print foo
+\end{lstlisting}
+\label{lst:label}
+\end{quote}
+
+According to IEEE Spectrum, who each year publish a highly respected ranking of languages by popularity based on 12 metrics from 10 data sources (including the IEEE Xplore digital library, GitHub, and CareerBuilder), Java remains the most popular programming language in 2015, holding onto it's top sport for the second year running \cite{top}\. This, combined with the rising popularity of the Android mobile OS which runs on a version of Java, make it an attractive choice for many. It is strongly-typed, which means that once a variable has been assigned a type, it cannot be redeclared as a different type. For exmaple the code below (Listing~\ref{lst:java}) would return an error.
+
+\begin{quote}
+\begin{lstlisting}[caption={Example Java code},label={lst:java},language=Python]
+String foo = ("hello");
+System.out.println(foo);
+Int foo = 2
+System.out.println(foo);
+\end{lstlisting}
+\label{lst:label}
+\end{quote}
+
+
+
+
+Feedback from the initial undertaken before the project indicated that users wanted a large as possible s
+
+
+Having had no previous experience of developing Android apps, I had to teach myself how 
+
+One aspect of other similar applications that I wanted to improve on was the menu. 
+
+
+On a technical level, CodeTouch is at it's heart an IDE. This means it has to allow the editing, interpreting, debugging, and running of code. There are many different ways that this could have been achieved, and in order to achieve the desired functionality and achieve the projects goals I had to carefully design the entire process and make decisions about how it would all work together. 
+
+
+
+
+\subsection{User Interface}
+
+\subsection{}
 
 
 
@@ -529,6 +1138,42 @@ material.
 
 {\bf A topic-specific chapter, of roughly $20$ pages} 
 \vspace{1cm} 
+
+
+
+\section{Choice Between Developing A Native Application, Cross-Platform Application or Hybrid Application}
+For CodeTouch, the performance of the application is very critical to the applications core function; when a user is generating code, it should feel as instant and natural as typing is on a computer. Seeing as it was difficult to predict if there would be any performance issues before development on the application started, the decision was made to go native in order to minimise the risk of poor performance affecting the application's use-ability. Once this decision was made, the decision to go for Android was made based on reasons articulated earlier in this document (see \ref{sec:Android}), plus I personally had more experience in Java than either Objective C or HTML5. (For an explanation of the three options see \ref{sec:ApTypes}).
+
+\section{Choice of Integrated Development Environment}
+
+When development for CodeTouch started there was a genuine choice between Eclipse and Android studio (see \ref{sec:andIDE}), as the Eclipse plugin was still being supported and developed, although there were suspicions of it's support being dropped as Android Studio had recently come out of beta mode. Having previously used Eclipse and with it already installed on my machine the temptation was there to stick with it, but ultimately Android Studio was chosen down to the fact that it's support was more guaranteed than Eclipse's.
+
+\section{Layout And Design}
+\subsubsection{Design}
+There were many considerations I had to take into account when designing the layout for CodeTouch. One important decision was how big the menu would be. The only other similar application in terms of how the user enters code, TouchDevelop, has a 
+
+\subsection{SECTION ABOUT THE CODE}
+
+
+
+\section{Designing the language}
+
+impossible to make syntactially incorrect code. Also semantically to an extent: ie can't use a variable that has not been declared, if you delete definition when it is usesd later it gives you a warning
+
+\section{Appearance of the language}
+When using CodeTouch, the user never really see's what the code they are making looks like, as they build the language tree directly, which is then analysed to produce the code afterwards. This meant that I could choose how the code would be displayed to the user, and indeed change this easily without having to redefine the language. 
+
+The two most popular languages to teach programming in are Java and Python (see \ref{sec:teachL}). For the language to be used in CodeTouch I decided to make it look more like Java, as this results in more verbose code, which suits CodeTouch as this results in there being less disparity between button presses and code appearing on the screen. The process of declaring a variable illustrates this point well. Because CodeTouch is designed to use the keyboard as little as possible, when declaring a variable it is necessary that the user is prompted to press a button to choose the type of the variable before naming it, as this then dictates which buttons will be visible for the rest of that line of code (for example, if a Boolean is chosen then the operators menu will bring up a different set of operators when clicked than if a String had been chosen). At this point in a statically-typed language, the name of the selected type will be output to the screen, for example:
+
+\begin{quote}
+\begin{lstlisting}[caption={Output when Boolean type is selected for variable declaration in Java},label={lst:javaDec},language=Java]
+Boolean
+\end{lstlisting}
+\label{lst:label}
+\end{quote}
+
+If I had chosen to make it dynamically typed, I still would have had to require that the user press this button so as to avoid requiring the user to have to type in quote marks when entering it's value (which is undesirable as I want to use the keyboard as little as possible). This would not result in any text being added to the code and would thus disrupt the flow and feel of the process. 
+
 
 \noindent
 This chapter is intended to describe what you did: the goal is to explain
@@ -633,6 +1278,50 @@ which is intended to ensure it does not run into the text.
 \vspace{1cm} 
 
 \noindent
+
+\section{Comparison with Competiton}
+\subsection{CodeTouch vs Scratch}
+As mentioned previously (see ~\ref{ssec:Scratch}), Scratch is a code-block visual language. 
+
+Although it is great for what it does, it is not a direct competitor of CodeTouch as it is aimed at a much younger audience, and the drag and drop method of producing code does not reproduce the feel and flow of type based coding, which my user-testing shows that CodeTouch successfully achieves. 
+
+\subsection{CodeTouch vs CodeAcademy}
+
+CodeAcademy is, as outlined earlier in this document, CodeAcademy is a typing-based web application (see \ref{ssec:CodeAcademy}. While there are many positive aspects of CodeAcademy that have inspired CodeTouch, CodeTouch improves on CodeAcademy in a number of ways. In CodeTouch, the intelligent error reporting happens in real time, without the need for compiling the code, pointing out errors to users as they are making them, as opposed to CodeAcademy which only reports errors after compilation. Furthermore, CodeAcademy is a web application and whilst it can be accessed from a tablets browser, it does not take advantage of any aspects of the touchscreen. 
+
+Although CodeAcademy has so far been popular in schools, it does not directly address the problem of the transition from visual code-block languages to textual languages that CodeTouch aims to solve, as it is not a syntax-mistake free environment, giving CodeTouch an edge in this respect.
+
+
+\subsection{CodeTouch vs TouchCode}
+TouchDevelop is Microsoft's touch-based coding tool (see \ref{ssec:TD}). It is CodeTouch's most similar rival, but CodeTouch improves on it's in some key areas. The back and forth screen presses between the menu and the code required to perform simple processes such as variable declaration is an area that CodeTouch improves on significantly; in CodeTouch the user can write a whole program without moving their fingers from the menu. For example, to program the code in Listing\ref{lst:varcode} takes requires the user to leave the menu [X] times, with [X] screen presses, while the same process on CodeTouch doesn't require the user to press anywhere except the menu and takes [X] screen presses. 
+
+\section{The Language}
+In CodeTouch, the language tree is constructed directly from the button presses, with the code being assembled from this afterwards. The result of this is that it makes it very easy to change how the code that is produced looks to the user. The advantage of this is that it would be very easy to make the code output become a subset of a real language. For example, although in it's current form the outputted code is a custom language designed to be easy to understand by beginners, it could easily be modified to output Java or Python code without much of the actual language being changed.
+
+\begin{quote}
+\begin{lstlisting}[label={lst:python},language=Python]
+String x = "hello";
+String y = "world";
+x = x + y;
+\end{lstlisting}
+\label{lst:label}
+\end{quote}
+
+Although this may not be of as much significance to complete beginners, it is an attractive improvement for more experienced coders using CodeTouch, as articulated by the subjects of my user-feedback sessions [ADD REFERENCE].
+
+TouchCode also is not a syntax-mistake free environment, making it less nurturing than CodeTouch, although it does have a strong real time error reporting system.
+
+
+
+\section{Future Development}
+There are many features that were planned but did not get implemented in the alloted time for the project. 
+\begin{enumerate}
+\item Although not yet implemented, CodeTouch's interface is designed to accommodate a similar challenge-based lesson system.
+\end{enumerate}
+
+
+
+
 This chapter is intended to evaluate what you did.  The content is highly 
 topic-specific, but for many projects will have flavours of the following:
 
