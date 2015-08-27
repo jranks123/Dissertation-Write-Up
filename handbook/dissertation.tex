@@ -47,10 +47,8 @@
 \usepackage{float}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{comment}
 \usetikzlibrary{shapes.geometric, arrows}
-Next we’ll add a TikZ style for process blocks using a rectangle and a style for decision blocks using a diamond.
-
-
 \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
@@ -462,17 +460,17 @@ At time of writing, there are 3 main types of mobile application:
 \begin{enumerate}
 \item \textbf{Native Application}
 \begin{itemize}
-A Native Application is written in a specific programming language for a specific hardware platform, for example Java for Android with Android, Objective C with iOS and C# for Windows Phone. Native apps are the best option in terms of performance as they can access the hardware of the device it is running on. Debugging is also easier, however the single platform nature of native applications make them more expensive to develop and maintain if cross platform coverage is desired, as companies need to do everything multiple times and potentially employ experts in multiple programming languages in order to maintain their app. 
+\item A Native Application is written in a specific programming language for a specific hardware platform, for example Java for Android with Android, Objective C with iOS and C# for Windows Phone. Native apps are the best option in terms of performance as they can access the hardware of the device it is running on. Debugging is also easier, however the single platform nature of native applications make them more expensive to develop and maintain if cross platform coverage is desired, as companies need to do everything multiple times and potentially employ experts in multiple programming languages in order to maintain their app. 
 \end{itemize}
 
 
 \item \textbf{Cross-Platform Application}
 \begin{itemize}
-A Cross-Platform Application is an application written in a generic web language, most commonly HTML5, in order to be runnable on all mobile applications, which is an obvious advantage over developing nativley.  Other advantages include being able to update the application centrally, removing the need for the user to download updates.  However, having to accommodate for all different types of browser can cause maintenance problems, and the fact that Cross-Platform apps cannot be uploaded to the native Application stores (such as Apple's App Store and Google's Play Store) may put off potential users as the apps security cannot be verified. Furthermore, they do not perform as quickly as native apps and due to their cross-platform nature, have to look the same on all devices, which can make them look unnatural. 
+\item A Cross-Platform Application is an application written in a generic web language, most commonly HTML5, in order to be runnable on all mobile applications, which is an obvious advantage over developing nativley.  Other advantages include being able to update the application centrally, removing the need for the user to download updates.  However, having to accommodate for all different types of browser can cause maintenance problems, and the fact that Cross-Platform apps cannot be uploaded to the native Application stores (such as Apple's App Store and Google's Play Store) may put off potential users as the apps security cannot be verified. Furthermore, they do not perform as quickly as native apps and due to their cross-platform nature, have to look the same on all devices, which can make them look unnatural. 
 \end{itemize}
 \item \textbf {Hybrid Application}
 \begin{itemize}
-A Hybrid Application aims to  combine the advantages of native and web app development. They are developed in generic web languages but are wrapped in native code. This means they can be cross platform but still take advantage of the devices in-built features. However, they still retain the disadvantages of cross-platform apps in that they do not perform as well and can look unnatural.
+\item A Hybrid Application aims to  combine the advantages of native and web app development. They are developed in generic web languages but are wrapped in native code. This means they can be cross platform but still take advantage of the devices in-built features. However, they still retain the disadvantages of cross-platform apps in that they do not perform as well and can look unnatural.
 \end{itemize}
 \end{enumerate}
 
@@ -679,10 +677,7 @@ The compilation process is the sequence of events that turns source code into a 
 \draw [arrow2] (r1) -- (a6);
 \draw [arrow] (start) -- (a1);
 \draw [arrow] (a6) -- (end);
-\node [below=2cm, align=flush center,text width=10cm] at (end)
-        {
-           $Stages$ $of$ $the$ $Compilation$ $Process$
-        };
+\node [below=2cm, align=flush center,text width=10cm] at (end);
 \end{tikzpicture}
 
 
@@ -979,6 +974,7 @@ This code declares an array of doubles, with the parameter 6, indicating that in
 
 \end{itemize}
 
+
 \subsection{Intermediate Code Generation}
 The parse tree generated from the syntactical analysis can be said to be a Concrete Syntax Tree, in that it exactly represents the source code. This often contains many nodes which are unessential for understanding the actions of the code, such as parentheses and semi-colons. The next step it to optimise this tree as much as possible for the later stages of the compiler. This is done by creating what is known as an
 \textbf{Abstract Syntax Tree (AST)} from the Concrete Syntax Tree. 
@@ -1005,7 +1001,7 @@ The parse tree generated from the syntactical analysis can be said to be a Concr
 
 \Tree[.= [.a ]
           [.$-$ [.b ]
-                [.* [.5 ] [. 6]]]]
+                [.* [.5 ] ]]]
                 \caption{}\label{fig:ab}
 \end{subfigure}
 \caption{Concrete Syntax Tree (a) and Abstract Syntax Tree (b) of $ a = b + 5 + 6 $}
@@ -1016,9 +1012,31 @@ The parse tree generated from the syntactical analysis can be said to be a Concr
 
 Figure~\ref{fig:ab} shows the Abstract Syntax Tree created from the Concrete Syntax Tree in Figure~\ref{fig:con}. The non-terminal symbols are not needed as they do not contribute to the semantic meaning of the code.
 
-
-
 \subsection{Code Optimization}
+This step takes the AST and performs any optimisations that will speed up the program execution. 
+
+\begin{figure}[!h]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  
+\Tree[.= [.a ]
+          [.$-$ [.b ]
+                [.* [.5 ] ]]]
+\caption{}\label{fig:ast}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+
+
+\Tree[.= [.a ]
+          [.$-$ [.b ]
+                [.30 ]]]
+                \caption{}\label{fig:opt}
+\end{subfigure}
+\caption{}
+\label{fig:opti}
+\end{figure}
 
 
 \subsection{Code Generation}
@@ -1316,7 +1334,7 @@ IDEA colaberative programming for classroom, so every pupil could have tablet wi
       and
 \item evaluation of options and decisions within the project, and/or a
       comparison with alternatives.
-\end{enumerate
+\end{enumerate}
 
 
 
