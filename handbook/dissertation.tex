@@ -88,6 +88,30 @@
 
 % =============================================================================
 
+\section*{Prelude}
+\thispagestyle{empty}
+
+
+A typical dissertation will be structured according to (somewhat) standard 
+sections, described in what follows.  However, it is hard and perhaps even 
+counter-productive to generalise: the goal is {\em not} to be prescriptive, 
+but simply to act as a guideline.  In particular, each page count given is
+important but not absolute: their aim is simply to highlight that a clear, 
+concise description is better than a rambling alternative that makes it 
+hard to separate important content and facts from trivia.
+
+template for your own dissertation by simply deleting extraneous sections
+and content; keep in mind that the associated {\tt Makefile} could be of
+use, in particular because it automatically executes \mbox{\BibTeX} to 
+deal with the associated bibliography.  
+
+You can, on the other hand, opt {\em not} to use this template; this is a 
+perfectly acceptable approach.  Note that a standard cover and declaration 
+of authorship may still be produced online via
+\[
+\mbox{\url{http://www.cs.bris.ac.uk/Teaching/Resources/cover.html}}
+\]
+
 % This macro creates the standard UoB title page by using information drawn
 % from the document class (meaning it is vital you select the correct degree 
 % title and so on).
@@ -1194,7 +1218,7 @@ The third option was to make the button presses directly modify the tree, then b
 \begin{figure}[!h]
 \centering
 \includegraphics[width=0.80\textwidth]{process}
-\caption{}
+\caption{The Tree Modification Process}
 \label{fig:processes}
 \end{figure}
 
@@ -1207,10 +1231,42 @@ A consequence of building the tree as we go along is that we do not need to comp
 Concrete Syntax trees contain many nodes which are unnecessary for a computer to understand the semantics of the code, and the usual process is to convert the tree to an Abstract Syntax Tree and optimise it as much as possible (see \ref{ssec:icm}) before converting it into machine-readable text. One option would have been to create an optimal Abstract Syntax Tree from the Concrete Syntax Tree whenever the user runs the code, and for long, complex programs this certainly would speed up the run time. However, CodeTouch's main target audience at this stage of development is beginners, so the programs that would be created are unlikely to be very complex; these types of program run very quickly on the application and as such optimising it further was not a priority. However, it is a feature that is planned for future development. 
 
 
+
 \section{Implementing the language}
- In this section I will outline how I implemented the language. 
+ In this section I will outline how I implemented the language, and detail the data structures and algorithms used. 
+
  
- \section{}
+\subsection{Outline of General Process}
+
+For each feature that I introduced to CodeTouch there were three main processes that it had to fit into, with changes in one often causing problems in the other. They were:
+
+\begin{enumerate}
+\item Ensuring that only the correct buttons are displayed to the user
+\item Ensuring that the code would output on the screen correctly
+\item Ensuring that the code ran properly
+\end{enumerate}
+
+Because of this I had to work very carefully, making sure to thoroughly test the application whenever developing additional features. 
+
+In order to aid this process I created a set of unit tests that I ran every time I changed anything, a set which grew as the project went on. This made sure that I didn't break the functionality of CodeTouch without realising as I was developing. Android for Java allows you to programatically perform button presses which meant that I could build up tests that would simulate any sequence of possible button presses, which was very useful for testing. 
+
+\begin{quote}
+\begin{lstlisting}[caption={Example Unit Test},label={lst:testCode},language=Java]
+public void blankFunctionTestOneParam(){
+        btnFunctions.performClick();
+        btnFuncBool.performClick();
+        edtEnterString.setText("a");
+        btnEnterFuncName.performClick();
+        btnFuncAddParam.performClick();
+        btnNewVarInt.performClick();
+        edtEnterString.setText("x");
+        btnEnterVarName.performClick();
+        btnEndFuncDec.performClick();
+\end{lstlisting}
+\label{lst:label}
+\end{quote}
+
+I learnt early on that it was best to try and keep these 3 processes as separate as possible. Initially, I used the button presses to determine both the modification that should be performed on the tree and the buttons that should be displayed. This made things difficult as often different button presses result in the program being in the same state.
 
 The solution to this was to limit the input options so that only 
 
@@ -1301,7 +1357,7 @@ CodeAcademy is, as outlined earlier in this document, CodeAcademy is a typing-ba
 Although CodeAcademy has so far been popular in schools, it does not directly address the problem of the transition from visual code-block languages to textual languages that CodeTouch aims to solve, as it is not a syntax and semantic-mistake free environment, giving CodeTouch an edge in this respect.
 
 
-\subsection{CodeTouch vs TouchCode}
+\subsection{CodeTouch vs TouchDevelop}
 TouchDevelop is Microsoft's touch-based coding tool (see \ref{ssec:TD}). It is CodeTouch's most similar rival, but CodeTouch improves on it's in some key areas. The back and forth screen presses between the menu and the code required to perform simple processes such as variable declaration is an area that CodeTouch improves on significantly; in CodeTouch the user can write a whole program without moving their fingers from the menu. For example, to program the code in Listing\ref{lst:varcode} takes requires the user to leave the menu [X] times, with [X] screen presses, while the same process on CodeTouch doesn't require the user to press anywhere except the menu and takes [X] screen presses. 
 
 CodeTouch is also provides a syntax error and semantic error free environment which TouchDevelop does not provide, which my user feedback showed was a much appreciated feature of CodeTouch \ref{SURVRERRTY}.
@@ -1320,7 +1376,7 @@ x = x + y;
 
 Although this may not be of as much significance to complete beginners, it is an attractive improvement for more experienced coders using CodeTouch, as articulated by the subjects of my user-feedback sessions [ADD REFERENCE].
 
-TouchCode also is not a syntax-mistake free environment, making it less nurturing than CodeTouch, although it does have a strong real time error reporting system.
+TouchDevelop also is not a syntax-mistake free environment, making it less nurturing than CodeTouch, although it does have a strong real time error reporting system.
 
 
 
