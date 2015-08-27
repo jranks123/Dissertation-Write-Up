@@ -518,7 +518,7 @@ INCLUDE IMAGE OF TRACEVIEW
 
 
 \subsection{Overview}
-At a high level, a programming language is a language constructed to relay instructions to a computer. More specifically, a language is usually described by two components, it's \textbf{syntax} and it's \textbf{semantics}.
+At a high level, a programming language is a language constructed to relay instructions to a computer. More specifically, a language is usually described by two components: it's \textbf{syntax} and it's \textbf{semantics}.
 
 \subsubsection{Syntax}
 From Wikipedia:
@@ -677,7 +677,7 @@ As is shown from the diagram, at each step of compilation errors can be detected
 
 \begin{itemize}
 \item[]
-In traditional programming languages, the is the process of converting an input stream of characters (the code) into tokens (tokenization). This step will determine whether the code it has been given is indeed made up of valid tokens. This process has several sub processes. It will remove and white spaces and comments, split the input stream into what are known as lexeme (a lexical unit of a language that is made up of one of several characters, which do not make sense separately), then pass these lexeme to a series of recognisers that will categorise them into tokens. These could include recognisers such as:
+In traditional programming languages, this is the process of converting an input stream of characters (the code) into tokens (tokenization). This step will determine whether the code it has been given is indeed made up of valid tokens. This process has several sub processes. It will remove and white spaces and comments, split the input stream into what are known as lexeme (a lexical unit of a language that is made up of one of several characters, which do not make sense separately), then pass these lexeme to a series of recognisers that will categorise them into tokens. These could include recognisers such as:
 
 \begin{enumerate}
 \item A keyword recogniser, categorises keyword tokens by consulting a list of keywords that cannot be used as identifiers (for example \textbf{null} or {String} in Java). 
@@ -1172,7 +1172,7 @@ Earlier in the document I described the conventional process of compilation in d
 \item Machine-readable code generated from Abstract Syntax Tree. 
 
 
-\end{itemize}
+\end{enumerate}
 
 The problem with this process for CodeTouch is that at the very first step, the user can write incorrect code. The aim of CodeTouch was to create a programming tool which didn't allow this. The result of this objective meant that stages 2,3 and 4 have to happen before the user enters any code, meaning that the traditional compilation pipeline would not be suitable for the project. 
 
@@ -1188,24 +1188,29 @@ These modifications could be done from analysing the text just added to the sour
 
 Another approach would be to simultaneously add the text to the source code and modify the tree. However, is it not difficult to imagine the difficulties that could arise in trying to make sure that the text and the tree stay in sync, especially when moving around the program and changing things.
 
-The third option was to make the button presses directly modify the tree, then build the code backwards from the tree. Although this method does require a single pass through the tree after each button press, it us computationally much cheaper than building the tree from the source code after each button press and makes it much easier to maintain as the problem of keeping the code and the tree in sync becomes a non-issue. For these reasons I chose this approach. This process is illustrated in Figure~\ref{processes}.
+The third option was to make the button presses directly modify the tree, then build the code backwards from the tree. Although this method does require a single pass through the tree after each button press, it us computationally much cheaper than building the tree from the source code after each button press and makes it much easier to maintain as the problem of keeping the code and the tree in sync becomes a non-issue. For these reasons I chose this approach. This process is illustrated in Figure~\ref{fig:processes}.
 
 
-
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.80\textwidth]{process}
-\caption{CodeTouch's Compilation Process}
+\caption{}
 \label{fig:processes}
 \end{figure}
 
+
+
 \subsubsection{Running the Code}
 
-A consequence of building the tree as we go along is that we do not need to compile the code in order to run it, as it has essentially been incrementally compiled as it was being produced, meaning that it is possible to run the code instantly (Note: in CodeTouch you can only run the program once the code is in a runnable state). However, a side-effect of the decision to produce the code backwards from the tree meant that the tree itself has to be an exact representation of the code, making it what is known as a Concrete Syntax Tree. Concrete Syntax trees contain many nodes which are unnecessary for a computer to understand the semantics of the code, and the usual process is to convert the tree to an Abstract Syntax Tree and optimise it as much as possible (see \ref{ssec:icm}) before converting it into machine-readable text. One option would have been to create an optimal Abstract Syntax Tree from the Concrete Syntax Tree whenever the user runs the code, and for long, complex programs this certainly would speed up the run time. However, CodeTouch's main target audience at this stage of development is beginners, so the programs that would be created are unlikely to be very complex; these types of program run very quickly on the application and as such optimising it further was not a priority. However, it is a feature that is planned for future development. 
+A consequence of building the tree as we go along is that we do not need to compile the code in order to run it, as it has essentially been incrementally compiled as it was being produced, meaning that it is possible to run the code instantly (Note: in CodeTouch you can only run the program once the code is in a runnable state). However, a side-effect of the decision to produce the code backwards from the tree meant that the tree itself has to be an exact representation of the code, making it what is known as a Concrete Syntax Tree (Note: the tree that CodeTouch stores is not a classical Concrete Syntax Tree as such, in that it is a combination of the tree and a set of rules which produce the code. This is detailed in \ref{SECTION ABOUT THE TREE}).
+
+Concrete Syntax trees contain many nodes which are unnecessary for a computer to understand the semantics of the code, and the usual process is to convert the tree to an Abstract Syntax Tree and optimise it as much as possible (see \ref{ssec:icm}) before converting it into machine-readable text. One option would have been to create an optimal Abstract Syntax Tree from the Concrete Syntax Tree whenever the user runs the code, and for long, complex programs this certainly would speed up the run time. However, CodeTouch's main target audience at this stage of development is beginners, so the programs that would be created are unlikely to be very complex; these types of program run very quickly on the application and as such optimising it further was not a priority. However, it is a feature that is planned for future development. 
 
 
 \section{Implementing the language}
-
+ In this section I will outline how I implemented the language. 
+ 
+ \section{}
 
 The solution to this was to limit the input options so that only 
 
