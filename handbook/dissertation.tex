@@ -86,30 +86,6 @@
 % own dissertation: everything following it is in the correct order to use 
 % as is.
 
-\section*{Prelude}
-\thispagestyle{empty}
-
-
-A typical dissertation will be structured according to (somewhat) standard 
-sections, described in what follows.  However, it is hard and perhaps even 
-counter-productive to generalise: the goal is {\em not} to be prescriptive, 
-but simply to act as a guideline.  In particular, each page count given is
-important but not absolute: their aim is simply to highlight that a clear, 
-concise description is better than a rambling alternative that makes it 
-hard to separate important content and facts from trivia.
-
-template for your own dissertation by simply deleting extraneous sections
-and content; keep in mind that the associated {\tt Makefile} could be of
-use, in particular because it automatically executes \mbox{\BibTeX} to 
-deal with the associated bibliography.  
-
-You can, on the other hand, opt {\em not} to use this template; this is a 
-perfectly acceptable approach.  Note that a standard cover and declaration 
-of authorship may still be produced online via
-\[
-\mbox{\url{http://www.cs.bris.ac.uk/Teaching/Resources/cover.html}}
-\]
-
 % =============================================================================
 
 % This macro creates the standard UoB title page by using information drawn
@@ -150,7 +126,7 @@ of authorship may still be produced online via
 
 \noindent
 CodeTouch is an application for touch screen devices that aims to make the process of teaching beginner programmers 
-how to code easier, more intuitive and up to date with current technology trends.
+how to code easier, more intuitive and up to date with current technology trends. 
 
 In January 2012 the Government
 announced that it was dropping the much derided ICT programme from the National Curriculum and replacing it with 
@@ -163,7 +139,7 @@ One of the objectives of the Curriculum that teachers have reported being challe
 CodeTouch aims to bridge this gap by combining the simplicity and ease of use of "drag and drop" programmes with the textual code output of the more advanced educational programmes. 
 
 
-To produce code, the user presses buttons from a dynamic menu at the bottom of screen. CodeTouch analyses the current state of the program and decides what buttons should be available to the user and makes it impossible for syntactically incorrect code to be produced, and only lets the programme be ran once it is in a valid state.
+To produce code, the user presses buttons from a dynamic menu at the bottom of screen. CodeTouch analyses the current state of the program and decides what buttons should be available to the user and makes it impossible for syntactically or semantically incorrect code to be produced, a feature that is unique in the market of textual coding applications, and only lets the programme be ran once it is in a valid state.
 
 Not just for children in school, CodeTouch aims to capitalise on the recent upsurge in popularity of coding amongst the mainstream public. With programming becoming an increasingly requested skill from employers and the rampant success of the mobile app market encouraging progressively more people from all backgrounds and age ranges to lean how to code, CodeTouch aims to help people learn the fundamental principles of programming in an environment where the user need not worry about making syntax errors. 
 
@@ -412,6 +388,8 @@ TouchDevelop is probably the most similar product that exists to CodeTouch. Deve
 
 Although TouchDevelop has similar objectives to CodeTouch, there are some key differences in implentation and user experience. TouchDevelop has a large, complicated interface with a multitude of buttons on screen at any time (see Figure~\ref{fig:touch}), which slows down the coding process and gives it a clunky feel. Coding on TouchDevelop does not have the same flow as typing and feels unnatural, for example to declare a variable the user has to click where they want to declare it in the code, use the menu to choose the name then click on the code again after the assignment symbol. The same goes for adding functions and other programming paradigms such as \textbf{if} then \textbf{else} statements, all of which disrupts the flow of coding. TouchDevelop also allows the user to create syntactically incorrect code. 
 
+TouchDevelop does not prevent the user from making syntax or semantic mistakes, as shown in Figure~\ref{fig:touch}, but it does provide suggestions for how to fix incorrect code. 
+
 
 
 
@@ -436,12 +414,12 @@ In order to achieve these goals, CodeTouch aims to create an integrated IDE with
 
 \begin{enumerate}
 \item Makes the most of the available space on a tablet screen
-\item Exploits the benefits that a touch screen has over a conventional keyboard, most importantly it's dynamic nature 
-\item Creates a programming environment that removes the need to worry about syntax mistakes so that beginners can focus on learning the principles of writing code
+\item Exploits the benefits that a touch screen has over a conventional keyboard, most importantly it's dynamic nature
+\item Creates a programming environment that removes the need to worry about syntax errors or semantic errors so that beginners can focus on learning the principles of writing code
 \item Is as easy to use as visual code-block programming applications but produces textual output
 \item Retains the free flowing feel of typing code on a keyboard
 \item Helps teachers bring pupils understanding of computing to the required level as required by the sections of the Key Stage 3 National Curriculum articulated earlier in this document (see \ref{ssec:KS3})
-\item Is fast and usable enough that it is also attractive to experienced coders as well as beginners 
+\item Is fast and usable enough that it is also attractive to experienced coders as well as beginners
 \end{enumerate}
 
 
@@ -528,8 +506,7 @@ An Integrate Development Environment, in the case of mobile applications, is an 
 \end{enumerate}
 
 
-\subsection{Android Studio}
-Android Studio, as previously mentioned, is Google's own IDE for developing Android apps. 
+
 
 
 \subsection{Android Device Monitor}
@@ -559,7 +536,7 @@ The syntax of a language is traditionally made up of three sections:
 This is the set of all valid tokens in a language. A token can be thought of a single element of a language. To use the English language analogy again, a token would be like the set of all valid words and punctuation marks. 
 
 \item{Concrete Syntax: }
-The concrete syntax of a language is the set of rules that describes a language. With reference to token. In most languages, it can be expressed by a \textbf{Context Free Grammar (CFG)}. A CFG $G\,$ can be described by the 4 tuple\cite{Sipser}:
+The concrete syntax of a language is the set of rules that describe a language. In most languages, it can be expressed by a \textbf{Context Free Grammar (CFG)}. A CFG $G\,$ can be described by the 4 tuple\cite{Sipser}:
 
 $G\,$ = ( $V\,$, $\Sigma$ , $R\,$, $S\,$ ) where:
 
@@ -598,7 +575,7 @@ for( int i = 0; i < 10; i++){
 }
 \end{lstlisting}
 
-If we were to analyse this syntactically, all we could say about it is that it is a valid combination of symbols for the Java language. On the otherhand, if we were to analyse it semantically we would say that this source code declares a new integer variable $a$ with an initial value of 0, then increments this value by 1 a total of 10 times, giving it a final value of 10. 
+If we were to analyse this syntactically, all we could say about it is that it is a valid combination of symbols for the Java language. On the other hand, if we were to analyse it semantically we would say that this source code declares a new integer variable $a$ with an initial value of 0, then increments this value by 1 a total of 10 times, giving it a final value of 10. 
 
 Another example that illustrates the difference between the syntactical and semantical properties of a code is the following two Java snippets:
 
@@ -635,6 +612,7 @@ if( a > 0 ){
 \end{figure}
 
 Syntactically, the two pieces of code are distinct, as the one on the left contains extra symbols. Semantically, however, they are exactly the same, as they both declare a new variable a and output= the text "hello word".
+
 
 
 
@@ -699,7 +677,7 @@ As is shown from the diagram, at each step of compilation errors can be detected
 
 \begin{itemize}
 \item[]
-In traditional programming languages, the is the process of converting an input stream of characters (the code) into tokens (tokenisation). This step will determine whether the code it has been given is indeed made up of valid tokens. This process has several sub processes. It will remove and white spaces and comments, split the input stream into what are known as lexeme (a lexical unit of a language that is made up of one of several characters, which do not make sense separately), then pass these lexeme to a series of recognisers that will categorise them into tokens. These could include recognisers such as:
+In traditional programming languages, the is the process of converting an input stream of characters (the code) into tokens (tokenization). This step will determine whether the code it has been given is indeed made up of valid tokens. This process has several sub processes. It will remove and white spaces and comments, split the input stream into what are known as lexeme (a lexical unit of a language that is made up of one of several characters, which do not make sense separately), then pass these lexeme to a series of recognisers that will categorise them into tokens. These could include recognisers such as:
 
 \begin{enumerate}
 \item A keyword recogniser, categorises keyword tokens by consulting a list of keywords that cannot be used as identifiers (for example \textbf{null} or {String} in Java). 
@@ -746,7 +724,7 @@ There are many ways of doing lexical analysis, but to illustrate the point clear
 
 \end{itemize}
 
-The example above shows an example tokenisation of the given code, where ID(a) means a keyword token with value a.
+The example above shows an example tokenization of the given code, where ID(a) means a keyword token with value a.
 
 At this stage, there are very few errors that can be detected. At most, it can invalid tokens (for example, an illegal symbol). 
 
@@ -757,11 +735,11 @@ At this stage, there are very few errors that can be detected. At most, it can i
 
 
 
-\subsection{Syntactic Analysis}
+\subsection{Syntactic Analysis}\label{ssec:contextfreelanguage}
 
 
 
-This step takes the tokens generated from Lexical analysis and determines if they fit the grammar of a language by attempting to create a parse tree from the tokens, using the languages Context Free Grammar.
+This step takes the tokens generated from Lexical analysis and determines if they fit the grammar of a language by attempting to create a parse tree from the tokens, using the language's Context Free Grammar. We call the parse tree generated a Concrete Syntax Tree. 
 \item []
 
 For example, we can define the language $G\,$ as follows:
@@ -785,7 +763,7 @@ $\langle ID \rangle$ $\rightarrow$ $a | b | c | d$
 
 
 At this stage, structural errors in the code can be detected. 
-Broadly speaking, there are two appraoches to parsing, top down and bottom up. Top-down parsing starts with the start symbol of the grammar and uses the rules to try and get to the given statement. If it can successfully, it is declared syntactically correct. 
+Broadly speaking, there are two approaches to parsing, top down and bottom up. Top-down parsing starts with the start symbol of the grammar and uses the rules to try and get to the given statement. If it can successfully, it is declared syntactically correct. 
 
 Bottom-up parsing starts with the statement and works up the rules to try and get to the start symbol. 
 
@@ -916,6 +894,9 @@ $\langle EXP \rangle$ $\rightarrow$ \begin{centering}$\langle EXP \rangle$ + $\l
 \linebreak
 However, this is unambiguous as it can produce different trees with different meanings depending on the parser. 
 
+
+
+
 \begin{figure}[h]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -943,12 +924,28 @@ However, this is unambiguous as it can produce different trees with different me
 
 The two trees in Figure~\ref{fig:both} are both valid parse trees for $a + b * c$, but Figure~\ref{fig:left} has the semantic meaning of (a+b)*c while Figure~\ref{fig:right} has the semantic meaning of a+(b*c). 
 
+There are some cases where ambiguity is unavoidable in a language, such as in C++:
+
+\begin{lstlisting}[language=Java]
+    x * y ;
+\end{lstlisting}
+
+This can mean two different things depending on what has happened so far in the program:
+\begin{enumerate}
+
+\item The declaration of y, as pointer to type x
+\item The multiplication of x and y, throwing away the answer.
+
+\end{enumerate}
+
+This distinction is not possible with a Context-Free Grammar, so most C++ compilers will combine the parsing with a lookup table, meaning  that once it sees, the parser knows whether x has been defined to a type or not. However, this means it is not a Context-Free Grammar as it is relying on context. We say this is now a \textbf{Context-Sensative Grammar (CSG)}. It is also worth noting that using CFGs and CSGs are not the only two option available, there exists a host of alternative parsing options, but they are less common and it would be beyond the scope of this document to present and explain every distinct method of parsing that has ever been invented. 
+
 
 
 \subsection{Semantical Analysis}
 This stage analyses whether the source code provided makes sense or not. The main tasks involved in this are:
 \begin{itemize}
-\item \textbf{Scope Resolution} \\ This is the process of checking whether a variable that has been called is accessable from the position in the code it is in. To use a Java snippet as an example:
+\item \textbf{Scope Resolution} \\ This is the process of checking whether a variable that has been called is accessible from the position in the code it is in. To use a Java snippet as an example:
 \begin{lstlisting}[language=Java]
     if(true){
         int a;
@@ -979,7 +976,7 @@ This code declares an array of doubles, with the parameter 6, indicating that in
 \end{itemize}
 
 
-\subsection{Intermediate Code Generation}
+\subsection{Intermediate Code Generation}\label{ssec:icm}
 The parse tree generated from the syntactical analysis can be said to be a Concrete Syntax Tree, in that it exactly represents the source code. This often contains many nodes which are unessential for understanding the actions of the code, such as parentheses and semi-colons. The next step it to optimise this tree as much as possible for the later stages of the compiler. This is done by creating what is known as an
 \textbf{Abstract Syntax Tree (AST)} from the Concrete Syntax Tree. 
 
@@ -1050,6 +1047,24 @@ In our example, the numerical constant 5 multiplied by the numerical constant 6 
 
 
 \subsection{Code Generation}
+The final stage of the compilation process, this maps the optimised Abstract Syntax Tree and translates it into machine-readable code.
+\newpage
+\section{Advanced Features Of Code Editors}
+Today's modern code editors have a host of advanced features designed to aid the programmer. 
+\begin{itemize}
+\item \textbf{Code Colouring} \\
+This is the colouring of different part of the source code to make it more readable.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.50\textwidth]{jcode}
+\caption{Example of Code Colouring}
+\label{fig:jcode}
+\end{figure}
+The code in Figure~\ref{fig:jcode}, from Android Studio, shows some good examples of this. Global variables, which are variables that can be accesses from any part of the program as long as the call comes after the declaration, are coloured a separate colour. This requires some semantical analysis pre-compilation, as it is impossible to know whether a variable is global or not by syntactical analysis alone. The variable p is coloured red to indicate that it has not been declared yet, another useful feature. Variables that do not serve any function are coloured in grey, for example w in this example as its value is not used for anything. 
+
+\end{itemize}
+
 
 
 \section{Different Types Of Programming Language Used To Teach Beginners}\label{sec:teachL}
@@ -1081,30 +1096,6 @@ System.out.println(foo);
 \end{quote}
 
 
-
-
-Feedback from the initial undertaken before the project indicated that users wanted a large as possible s
-
-
-Having had no previous experience of developing Android apps, I had to teach myself how 
-
-One aspect of other similar applications that I wanted to improve on was the menu. 
-
-
-On a technical level, CodeTouch is at it's heart an IDE. This means it has to allow the editing, interpreting, debugging, and running of code. There are many different ways that this could have been achieved, and in order to achieve the desired functionality and achieve the projects goals I had to carefully design the entire process and make decisions about how it would all work together. 
-
-
-
-
-\subsection{User Interface}
-
-\subsection{}
-
-
-
-
-
-
 Talk about history of language engineering, of real time error checking
 
 
@@ -1120,23 +1111,6 @@ talk about pencil code
 
 Output is real code, looks like java but could be tweaked to be anything, or indeed to actually create valid java.
 
-\noindent
-This chapter is intended to describe the technical basis on which execution
-of the project depends.  The goal is to provide a detailed explanation of
-the specific problem at hand, and existing work that is relevant (e.g., an
-existing algorithm that you use, alternative solutions proposed, supporting
-technologies).  
-
-Per the same advice in the handbook, note there is a subtly difference from
-this and a full-blown literature review (or survey).  The latter might try
-to capture and organise (e.g., categorise somehow) {\em all} related work,
-potentially offering meta-analysis, whereas here the goal is simple to
-ensure the dissertation is self-contained.  Put another way, after reading 
-this chapter a non-expert reader should have obtained enough background to 
-understand what {\em you} have done, and then accurately assess your work.
-You might view an additional goal as giving the reader confidence that you 
-are able to absorb, understand and clearly communicate highly technical 
-material.
 
 % -----------------------------------------------------------------------------
 
@@ -1155,23 +1129,97 @@ For CodeTouch, the performance of the application is very critical to the applic
 
 When development for CodeTouch started there was a genuine choice between Eclipse and Android studio (see \ref{sec:andIDE}), as the Eclipse plugin was still being supported and developed, although there were suspicions of it's support being dropped as Android Studio had recently come out of beta mode. Having previously used Eclipse and with it already installed on my machine the temptation was there to stick with it, but ultimately Android Studio was chosen down to the fact that it's support was more guaranteed than Eclipse's.
 
-\section{Layout And Design}
-\subsubsection{Design}
-There were many considerations I had to take into account when designing the layout for CodeTouch. One important decision was how big the menu would be. The only other similar application in terms of how the user enters code, TouchDevelop, has a 
+\section{Layout}
+There were many considerations I had to take into account when designing the layout for CodeTouch. One important decision was how big the menu would be. The only other similar application in terms of how the user enters code, TouchDevelop, has a very large, cluttered menu with 36 buttons on display at a time. I wanted to avoid this in order to leave as much space free for the code. 
 
-\subsection{SECTION ABOUT THE CODE}
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.80\textwidth]{UIN}
+\caption{Graphical User Interface Appearance}
+\label{fig:ui}
+\end{figure}
+`
+Figure~\ref{fig:ui} shows my final design. As you can see, the majority of the screen is dominated the area labeled $1$, the code box.I made this decision based off responses to my initial survey (Question 5, ~\ref{ssec:survey}). There are two menu's at the bottom of the screen. The one labelled $3$ in the diagram is the code creation menu. It is dynamic in that the buttons on the menu change depending on the users current position in the program. The menu labelled $4$ is the control menu. This is where all the buttons for functions that do not add to the code reside. There is only one non-dynamic button, the run button. This button only appears when the code is in a valid, runnable state. 
 
 
 \section{Designing the language}
 
-impossible to make syntactially incorrect code. Also semantically to an extent: ie can't use a variable that has not been declared, if you delete definition when it is usesd later it gives you a warning
+\subsection{How much to restrict the user}
+As laid out in my objectives, I wanted to create a programming environment where the user does not need to worry about semantic or syntactical mistakes. But there was some consideration to be made when implementing this. Just because I wanted the user to not have to worry about making mistakes didn't mean I wanted to completely stop them from making mistakes at all. People learn from making mistakes, and for this reason I identifed certain mistakes that I would allow users in CodeTouch to make. However, rather than let this mistake translate into the code, a pop-up box appears informing the user of their mistake.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.80\textwidth]{boolmistake}
+\caption{}
+\label{fig:boolmistake}
+\end{figure}
+
+Figure~\ref{fig:boolmistake} shows what happens if you try to send a String as a parameter to a function that takes an Integer as a parameter. 
+
+Another consideration I had to make when deciding how to limit the user was the different kind of users CodeTouch is aimed at. For more experienced users, making a semantic mistake can be a desired option. For example, I could prevent the user from making the semantic mistake of deleting a variable declaration when that variable is used later on in the code. However, they may just want to move the declaration to somewhere else, and requiring the user to delete every instance of the said variable before letting them move the declaration would be very frustrating for the user in this scenario. At the same time I still wanted to consider novices who might not know what they are doing. As a compromise I decided to show a warning when a user attempts to delete a variable already in use later on, letting the user know that this will cause an error but letting them make it if they want to. If this variable is deleted, the code is not be runnable until the declaration has been restored (enforced by the hiding of the run button).
+
+
+\subsection{Designing the User Interface and Compilation Process}
+
+Earlier in the document I described the conventional process of compilation in detail \ref{compilation}. To briefly recap, the overall process is as follows:
+
+\begin{enumerate}
+\item User writes code
+\item Compiler performs lexical analysis to determine if all the characters it has been provided with can be turned into valid tokens of the language through the process of tokenization. 
+\item Compiler performs syntactic analysis to determine if the tokens generated in the previous step make sense structurally with eachtother by attempting to build a Concrete Syntax Tree from the tokens, using a Context-Free Grammar and associated set of rules. 
+\item Compiler performs semantic analysis to determine if code makes sense, in that all the elements of the parse tree generated in the previous step make sense with eachother in context, as well as performing other semantic checks such as array-bound checking
+\item Abstract Syntax Tree is created from Concrete Syntax Tree in order to optimise the tree for the machine that is going to run the code
+\item Machine-readable code generated from Abstract Syntax Tree. 
+
+
+\end{itemize}
+
+The problem with this process for CodeTouch is that at the very first step, the user can write incorrect code. The aim of CodeTouch was to create a programming tool which didn't allow this. The result of this objective meant that stages 2,3 and 4 have to happen before the user enters any code, meaning that the traditional compilation pipeline would not be suitable for the project. 
+
+\subsubsection{Pre-tokenization}
+
+Even just preventing lexical errors would be practically impossible to implement with a keyboard input, as it would not be possible to detect whether a user has made a mistake until they have finished typing the word they are writing, invalidating the requirements I set for CodeTouch. Of course, one could map each valid token in a language to a different key, but this would be impractical and near on unusable. On a tablet however, by creating dynamic buttons that map to valid tokens, we can limit the input to just a set of buttons that correspond to these valid tokens, a process that I have called pre-tokenization.
+
+
+\section{Tree Modification}
+The next problem was how to ensure that only buttons would lead to syntactically and semantically correct code would be on display at any time. This required syntactical and semantical analysis of the existing code in order to know what options should be available for the next button press. Syntactical and semantical analysis is performed using a syntax tree which, as detailed in \ref{compilation} By analysing the tree, using a set of rules, it is possible to know what inputs are valid. The consequence of this is that we need to analyse the Sytax tree for the current source code every time we want to add a token to the code. Traditionally, the tree is usually built from the source code using some kind of grammar (see \ref{contextfreegrammar}). One approach that could have been taken at this stage would have been to rebuild the tree from the source code every time a button is pressed, which would result in some rather hefty computation. This approach would have a sever impact on the performance of the application, especially once the program starts to grow in size.The logical solution to this is to keep the tree stored in memory and make incremental modifications as the user builds up their program.
+
+These modifications could be done from analysing the text just added to the source code, but this would be a naive approach as it would then require lexical analysis to tokenize the text, which would not take advantage of the fact that the tokenization has, in effect, already been done by only allowing the user to add valid tokens to the text. 
+
+Another approach would be to simultaneously add the text to the source code and modify the tree. However, is it not difficult to imagine the difficulties that could arise in trying to make sure that the text and the tree stay in sync, especially when moving around the program and changing things.
+
+The third option was to make the button presses directly modify the tree, then build the code backwards from the tree. Although this method does require a single pass through the tree after each button press, it us computationally much cheaper than building the tree from the source code after each button press and makes it much easier to maintain as the problem of keeping the code and the tree in sync becomes a non-issue. For these reasons I chose this approach. This process is illustrated in Figure~\ref{processes}.
+
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.80\textwidth]{process}
+\caption{CodeTouch's Compilation Process}
+\label{fig:processes}
+\end{figure}
+
+\subsubsection{Running the Code}
+
+A consequence of building the tree as we go along is that we do not need to compile the code in order to run it, as it has essentially been incrementally compiled as it was being produced, meaning that it is possible to run the code instantly (Note: in CodeTouch you can only run the program once the code is in a runnable state). However, a side-effect of the decision to produce the code backwards from the tree meant that the tree itself has to be an exact representation of the code, making it what is known as a Concrete Syntax Tree. Concrete Syntax trees contain many nodes which are unnecessary for a computer to understand the semantics of the code, and the usual process is to convert the tree to an Abstract Syntax Tree and optimise it as much as possible (see \ref{ssec:icm}) before converting it into machine-readable text. One option would have been to create an optimal Abstract Syntax Tree from the Concrete Syntax Tree whenever the user runs the code, and for long, complex programs this certainly would speed up the run time. However, CodeTouch's main target audience at this stage of development is beginners, so the programs that would be created are unlikely to be very complex; these types of program run very quickly on the application and as such optimising it further was not a priority. However, it is a feature that is planned for future development. 
+
+
+\section{Implementing the language}
+
+
+The solution to this was to limit the input options so that only 
+
+In my case the machine that had to read it was Java.
+
+impossible to make syntactially incorrect code. Also semantically to an extent: ie can't use a variable that has not been declared, if you delete definition when it is usesd later it gives you a warning. 
+
+
 
 \section{Appearance of the language}
 When using CodeTouch, the user never really see's what the code they are making looks like, as they build the language tree directly, which is then analysed to produce the code afterwards. This meant that I could choose how the code would be displayed to the user, and indeed change this easily without having to redefine the language. 
 
 The two most popular languages to teach programming in are Java and Python (see \ref{sec:teachL}). For the language to be used in CodeTouch I decided to make it look more like Java, as this results in more verbose code, which suits CodeTouch as this results in there being less disparity between button presses and code appearing on the screen. The process of declaring a variable illustrates this point well. Because CodeTouch is designed to use the keyboard as little as possible, when declaring a variable it is necessary that the user is prompted to press a button to choose the type of the variable before naming it, as this then dictates which buttons will be visible for the rest of that line of code (for example, if a Boolean is chosen then the operators menu will bring up a different set of operators when clicked than if a String had been chosen). At this point in a statically-typed language, the name of the selected type will be output to the screen, for example:
-
+ 
 \begin{quote}
 \begin{lstlisting}[caption={Output when Boolean type is selected for variable declaration in Java},label={lst:javaDec},language=Java]
 Boolean
@@ -1214,69 +1262,18 @@ is useful and/or informative in some way: for example, if there was a
 decision to be made then explain the trade-offs and implications 
 involved.
 
-\section{Example Section}
+\section{Future Development}
+There are many features that were planned but did not get implemented in the alloted time for the project. 
+\begin{enumerate}
+\item Although not yet implemented, CodeTouch's interface is designed to accommodate a similar challenge-based lesson system.
+\item Finish the editing capabilities
+\item More programming functionailty - arrays 
+\item Optimise runtime by creating abstract syntax tree (ie do reverse polish notation)
+\item Ability to program in real languages - easy, why?
+\item Ability to export programs as executable code in these languages. This would turn concrete syntax tree into abstract syntax tree and optimise first. The ability to do this could also be useful for a "fast run" option, where AST is compiled. 
+\end{enumerate}
 
-This is an example section; 
-the following content is auto-generated dummy text.
-\lipsum
 
-\subsection{Example Sub-section}
-
-\begin{figure}[t]
-\centering
-foo
-\caption{This is an example figure.}
-\label{fig}
-\end{figure}
-
-\begin{table}[t]
-\centering
-\begin{tabular}{|cc|c|}
-\hline
-foo      & bar      & baz      \\
-\hline
-$0     $ & $0     $ & $0     $ \\
-$1     $ & $1     $ & $1     $ \\
-$\vdots$ & $\vdots$ & $\vdots$ \\
-$9     $ & $9     $ & $9     $ \\
-\hline
-\end{tabular}
-\caption{This is an example table.}
-\label{tab}
-\end{table}
-
-\begin{algorithm}[t]
-\For{$i=0$ {\bf upto} $n$}{
-  $t_i \leftarrow 0$\;
-}
-\caption{This is an example algorithm.}
-\label{alg}
-\end{algorithm}
-
-\begin{lstlisting}[float={t},caption={This is an example listing.},label={lst},language=C]
-for( i = 0; i < n; i++ ) {
-  t[ i ] = 0;
-}
-\end{lstlisting}
-
-This is an example sub-section;
-the following content is auto-generated dummy text.
-Notice the examples in Figure~\ref{fig}, Table~\ref{tab}, Algorithm~\ref{alg}
-and Listing~\ref{lst}.
-\lipsum
-
-\subsubsection{Example Sub-sub-section}
-
-This is an example sub-sub-section;
-the following content is auto-generated dummy text.
-\lipsum
-
-\paragraph{Example paragraph.}
-
-This is an example paragraph; note the trailing full-stop in the title,
-which is intended to ensure it does not run into the text.
-
-% -----------------------------------------------------------------------------
 
 \chapter{Critical Evaluation}
 \label{chap:evaluation}
@@ -1296,11 +1293,13 @@ Although it is great for what it does, it is not a direct competitor of CodeTouc
 
 CodeAcademy is, as outlined earlier in this document, CodeAcademy is a typing-based web application (see \ref{ssec:CodeAcademy}. While there are many positive aspects of CodeAcademy that have inspired CodeTouch, CodeTouch improves on CodeAcademy in a number of ways. In CodeTouch, the intelligent error reporting happens in real time, without the need for compiling the code, pointing out errors to users as they are making them, as opposed to CodeAcademy which only reports errors after compilation. Furthermore, CodeAcademy is a web application and whilst it can be accessed from a tablets browser, it does not take advantage of any aspects of the touchscreen. 
 
-Although CodeAcademy has so far been popular in schools, it does not directly address the problem of the transition from visual code-block languages to textual languages that CodeTouch aims to solve, as it is not a syntax-mistake free environment, giving CodeTouch an edge in this respect.
+Although CodeAcademy has so far been popular in schools, it does not directly address the problem of the transition from visual code-block languages to textual languages that CodeTouch aims to solve, as it is not a syntax and semantic-mistake free environment, giving CodeTouch an edge in this respect.
 
 
 \subsection{CodeTouch vs TouchCode}
 TouchDevelop is Microsoft's touch-based coding tool (see \ref{ssec:TD}). It is CodeTouch's most similar rival, but CodeTouch improves on it's in some key areas. The back and forth screen presses between the menu and the code required to perform simple processes such as variable declaration is an area that CodeTouch improves on significantly; in CodeTouch the user can write a whole program without moving their fingers from the menu. For example, to program the code in Listing\ref{lst:varcode} takes requires the user to leave the menu [X] times, with [X] screen presses, while the same process on CodeTouch doesn't require the user to press anywhere except the menu and takes [X] screen presses. 
+
+CodeTouch is also provides a syntax error and semantic error free environment which TouchDevelop does not provide, which my user feedback showed was a much appreciated feature of CodeTouch \ref{SURVRERRTY}.
 
 \section{The Language}
 In CodeTouch, the language tree is constructed directly from the button presses, with the code being assembled from this afterwards. The result of this is that it makes it very easy to change how the code that is produced looks to the user. The advantage of this is that it would be very easy to make the code output become a subset of a real language. For example, although in it's current form the outputted code is a custom language designed to be easy to understand by beginners, it could easily be modified to output Java or Python code without much of the actual language being changed.
@@ -1320,11 +1319,7 @@ TouchCode also is not a syntax-mistake free environment, making it less nurturin
 
 
 
-\section{Future Development}
-There are many features that were planned but did not get implemented in the alloted time for the project. 
-\begin{enumerate}
-\item Although not yet implemented, CodeTouch's interface is designed to accommodate a similar challenge-based lesson system.
-\end{enumerate}
+
 
 
 
@@ -1371,6 +1366,8 @@ in a suitable manner.
 The concluding chapter of a dissertation is often underutilised because it 
 is too often left too close to the deadline: it is important to allocation
 enough attention.  Ideally, the chapter will consist of three parts:
+
+talk about how code colouring
 
 \begin{enumerate}
 \item (Re)summarise the main contributions and achievements, in essence
