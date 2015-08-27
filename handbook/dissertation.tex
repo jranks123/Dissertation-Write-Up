@@ -48,6 +48,8 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
+Next we’ll add a TikZ style for process blocks using a rectangle and a style for decision blocks using a diamond.
+
 
 \tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
@@ -279,7 +281,7 @@ The United Kingdom has a rich history in the field of Computer Science. Inventio
 
 \subsection{The BBC Micro}\label{sssec:bbcMicro}
 
-For a long time, computers were so expensive that their study and use was mostly confined to the academics at the universities. But as the 70s drew to a close, the drastic reduction in cost of the production of microprocessors meant that purchasing computers was becoming an ever more attractive option for ever smaller businesses around the world, who quickly saw their potential for making efficiency gains in many work related tasks, particularly in information processing. As more and more businesses bought into computers, the BBC, with backing from the Department of Education, decided that the public should be aware of the big changes that the microchip revolution was causing, and what impact this would have on their lives. A series of documentaries about microchips, broadcast in 1978 and 1979, prompted so much interest that the highly ambitious Computer Literacy Project (CLP) was begun. This scheme aimed to teach the country to program via television broadcasts. A purpose-designed microcomputer (a small, cheap and self contained computer with a microprocessor as it's CPU) , the much-loved BBC Micro, was developed for the program, the idea being that viewers bought the machine and programmed along with the broadcasts. Educational establishments across the country took part in their droves, thanks in no small part to a government initiative which agreed to subsidise half of the costs of the machines to schools, and by the 1986, 80\% of UK schools had a Micro \cite{IIfASA}. The microcomputer's success was mirrored in the US, where 90\% of schools had a microcomputer by 1985\cite{IIfASA}.
+For a long time, computers were so expensive that their study and use was mostly confined to the academics at the universities. But as the 70s drew to a close, the drastic reduction in cost of the production of microprocessors meant that purchasing computers was becoming an ever more attractive option for ever smaller businesses around the world, who quickly saw their potential for making efficiency gains in many work related tasks, particularly in information processing. As more and more businesses bought into computers, the BBC, with backing from the Department of Education, decided that the public should be aware of the big changes that the microchip revolution was causing, and what impact this would have on their lives. A series of documentaries about microchips, broadcast in 1978 and 1979, prompted so much interest that the highly tious Computer Literacy Project (CLP) was begun. This scheme aimed to teach the country to program via television broadcasts. A purpose-designed microcomputer (a small, cheap and self contained computer with a microprocessor as it's CPU) , the much-loved BBC Micro, was developed for the program, the idea being that viewers bought the machine and programmed along with the broadcasts. Educational establishments across the country took part in their droves, thanks in no small part to a government initiative which agreed to subsidise half of the costs of the machines to schools, and by the 1986, 80\% of UK schools had a Micro \cite{IIfASA}. The microcomputer's success was mirrored in the US, where 90\% of schools had a microcomputer by 1985\cite{IIfASA}.
 
 
 
@@ -568,6 +570,7 @@ $G\,$ = ( $V\,$, $\Sigma$ , $R\,$, $S\,$ ) where:
 $V\,$  is a finite set, whose elements are called variables
 \item
 $\Sigma$ is a finite set, whose elements are called terminals
+\item $V\,$ $\cap$ $\Sigma$ = $\emptyset$,
 \item
 $R\,$ is a finite relation from V to ($V\,\cup\Sigma$)$^{*}\,$. The members of $R\,$ are called the rules or productions of the grammar. 
 \item
@@ -759,7 +762,7 @@ At this stage, there are very few errors that can be detected. At most, it can i
 
 
 
-This step takes the tokens generated from Lexical analysis and determines if they fit the grammar of a language by attempting to create a parse tree from the tokens, using the languages Context Free Grammar. The resulting tree from this process is called the \textbf{Concrete Syntax Tree}. 
+This step takes the tokens generated from Lexical analysis and determines if they fit the grammar of a language by attempting to create a parse tree from the tokens, using the languages Context Free Grammar.
 \item []
 
 For example, we can define the language $G\,$ as follows:
@@ -803,7 +806,7 @@ It is not necessary for the scope of this project to understand the nuances of l
           [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.b ]]
             [.$-$ ]
                 [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.c ]]
-            [.$+$ ]
+            [.$*$ ]
                 [.$\langle$EXP$\rangle$ [.$\langle$ID$\rangle$ [.d
 ]]]]]]
 
@@ -818,23 +821,23 @@ It is not necessary for the scope of this project to understand the nuances of l
             \item $a = \langle EXP \rangle $\\
             \item $a = \langle ID \rangle - \langle EXP \rangle $\\
             \item $a = b - \langle EXP \rangle $\\
-            \item $a = b - \langle ID \rangle + \langle EXP \rangle $\\
-            \item $a = b - c + \langle EXP \rangle $\\
-            \item $a = b - c + \langle ID \rangle $\\
-            \item $a = b - c + d $\\
+            \item $a = b - \langle ID \rangle * \langle EXP \rangle $\\
+            \item $a = b - c * \langle EXP \rangle $\\
+            \item $a = b - c * \langle ID \rangle $\\
+            \item $a = b - c * d $\\
         \end{enumerate}
 
 \end{subfigure}
-\caption{$a = b - c + d$}
+\caption{$a = b - c * d$}
 \label{fig:success}
 \end{figure}
 
-Figure~\ref{fig:success} shows a successful top down, leftmost derivation parsing of the code $a = b - c + d$ using grammar $G$. The left hand side of the diagram shows the resulting parse tree and the right hand side shows the derivation steps. As you can see in step 1, we start with the start symbol of the grammar, $\langle ASSIGN \rangle$. If we recall the first rule from $R$:
+Figure~\ref{fig:success} shows a successful top down, leftmost derivation parsing of the code $a = b - c * d$ using grammar $G$. The left hand side of the diagram shows the resulting parse tree and the right hand side shows the derivation steps. As you can see in step 1, we start with the start symbol of the grammar, $\langle ASSIGN \rangle$. If we recall the first rule from $R$:
 
 \begin{center}
 $\langle ASSIGN \rangle$ $\rightarrow$ $\langle EXP \rangle$ = $\langle EXP \rangle$
 \end{center}
-we can see that our code, $a = b - c + d$, can fit this as we can put $a$ into the left side and $b - c + d$ into the right side, giving us
+we can see that our code, $a = b - c * d$, can fit this as we can put $a$ into the left side and $b - c * d$ into the right side, giving us
 $\langle EXP \rangle$ = $\langle EXP \rangle$.
 
 From here, as we are evaluating the left hand side first, the parser now looks for the left most non-terminal symbol, which in this case is $\langle EXP \rangle$, which contains only $a$. 
@@ -897,6 +900,7 @@ we can see that $\langle EXP \rangle$ has to either evaluate to something + some
 
 \end{itemize}
 
+
 \subsection{Ambiguous Grammars}
 Before we move on, it is important to note that when building a grammar to build a Concrete Syntax Tree, a highly desirable property is that of \textbf{unambiguity}. To say a grammar is ambiguous is to say that one string can have more than one distinct valid parse trees. The problem with this is that these parse trees, although all having the same value syntactically, can have completely different meanings semantically. 
 
@@ -938,9 +942,7 @@ However, this is unambiguous as it can produce different trees with different me
 \caption{Leftmost derivative (a) and rightmost derivative parse trees for $a + b * c$}\label{fig:both}
 \end{figure}
 
-The two trees in Figure~\ref{fig:both} are both valid parse trees for $a + b * c$, but Figure~\ref{fig:left} has the semantic meaning of (a+b)*c while Figure~\ref{fig:right} has the semantic meaning of a+(b*c). We could fix this by 
-
-
+The two trees in Figure~\ref{fig:both} are both valid parse trees for $a + b * c$, but Figure~\ref{fig:left} has the semantic meaning of (a+b)*c while Figure~\ref{fig:right} has the semantic meaning of a+(b*c). 
 
 
 
@@ -1014,32 +1016,9 @@ The parse tree generated from the syntactical analysis can be said to be a Concr
 
 Figure~\ref{fig:ab} shows the Abstract Syntax Tree created from the Concrete Syntax Tree in Figure~\ref{fig:con}. The non-terminal symbols are not needed as they do not contribute to the semantic meaning of the code.
 
+
+
 \subsection{Code Optimization}
-This step takes the AST and performs any optimisations that will speed up the program execution. 
-
-\begin{figure}[!h]
-\centering
-\begin{subfigure}{.5\textwidth}
-  \centering
-  
-\Tree[.= [.a ]
-          [.$-$ [.b ]
-                [.* [.5 ] [. 6]]]]
-\caption{}\label{fig:ast}
-\end{subfigure}%
-\begin{subfigure}{.5\textwidth}
-  \centering
-
-
-\Tree[.= [.a ]
-          [.$-$ [.b ]
-                [.30 ]]]
-                \caption{}\label{fig:opt}
-\end{subfigure}
-\caption{}
-\label{fig:opti}
-\end{figure}
-
 
 
 \subsection{Code Generation}
